@@ -57,6 +57,26 @@ public class FuncionarioChecker {
 
     }
 
+    private static ArrayList<Par> getHorario(int idFuncionario) {
+        ArrayList<Par> horasNoCompensadas = new ArrayList();
+        String sql = "SELECT horaInicio, horaFin FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " ORDER BY horaInicio ASC";
+
+        try (Connection con = ConnectionPool.getConnection()) {
+            Statement stm = con.createStatement();
+            ResultSet resultado = stm.executeQuery(sql);
+
+            Par par;
+            while (resultado.next()) {
+                par = new Par(resultado.getInt("horaInicio"), resultado.getInt("horaFin"));
+                horasNoCompensadas.add(par);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioChecker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return horasNoCompensadas;
+    }
+
     private static ArrayList<Par> getHorasNoFijas(int idFuncionario) {
         ArrayList<Par> horasNoCompensadas = new ArrayList();
         String sql = "SELECT horaInicio, horaFin FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " AND compensatorio=1 ORDER BY horaInicio ASC";
