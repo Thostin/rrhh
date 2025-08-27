@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.DetalleFuncionarioController">
+   <children>
+      <AnchorPane layoutX="9.0" layoutY="315.0" prefHeight="76.0" prefWidth="994.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0">
+         <children>
+            <Button fx:id="btnVolver" layoutX="648.0" layoutY="25.0" mnemonicParsing="false" onAction="#volver" text="Volver" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="81.0" />
+            <Button fx:id="btnEditar" layoutX="475.0" layoutY="25.0" mnemonicParsing="false" onAction="#editar" text="Editar" AnchorPane.bottomAnchor="25.0" />
+            <Button fx:id="btnAnadir" layoutX="393.0" layoutY="25.0" mnemonicParsing="false" onAction="#anadirHorario" text="Anadir" />
+            <Button fx:id="btnEliminar" layoutX="555.0" layoutY="25.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="9.0" layoutY="9.0" prefHeight="300.0" prefWidth="615.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="9.0">
+         <children>
+            <TableView fx:id="tablaHorarios" layoutX="14.0" layoutY="54.0" onMouseClicked="#mostrarFila" prefHeight="232.0" prefWidth="588.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="54.0">
+              <columns>
+                  <TableColumn fx:id="columnaDia" prefWidth="163.0" text="Dia" />
+                  <TableColumn fx:id="columnaHoraEntrada" minWidth="0.0" prefWidth="142.0" text="Hora de entrada" />
+                  <TableColumn fx:id="columnaHoraSalida" prefWidth="156.0" text="Hora de salida" />
+                  <TableColumn fx:id="columnaSala" prefWidth="174.0" text="Sala" />
+                  <TableColumn fx:id="columnaEsCompensatorio" prefWidth="122.0" text="Es compensatorio" />
+              </columns>
+            </TableView>
+            <Label layoutX="14.0" prefHeight="50.0" prefWidth="234.0" text="Detalle del funcionario">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNombre" layoutX="263.0" layoutY="9.0" prefHeight="32.0" prefWidth="265.0" AnchorPane.leftAnchor="263.0" AnchorPane.topAnchor="9.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

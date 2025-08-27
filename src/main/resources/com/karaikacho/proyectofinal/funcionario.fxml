@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="371.0"
+            minHeight="400.0" maxHeight="400.0"
+            minWidth="371.0" maxWidth="371.0"
+            xmlns="http://javafx.com/javafx/21.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.karaikacho.proyectofinal.FuncionarioController">
+   <children>
+      <Pane layoutX="48.0" layoutY="14.0" prefHeight="346.0" prefWidth="371.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="69.0" layoutY="53.0" text="Nombres:" />
+            <Label layoutX="69.0" layoutY="106.0" text="Apellidos:" />
+            <Label layoutX="69.0" layoutY="164.0" prefHeight="18.0" prefWidth="71.0" text="Cedula:" />
+            <Label layoutX="69.0" layoutY="230.0" text="Linea Baja:" />
+            <Label layoutX="69.0" layoutY="282.0" text="Celular:" />
+            <TextField fx:id="txtNombres" layoutX="140.0" layoutY="49.0" />
+            <TextField fx:id="txtApellidos" layoutX="140.0" layoutY="102.0" />
+            <TextField fx:id="txtCedula" layoutX="140.0" layoutY="160.0" />
+            <TextField fx:id="txtLineaBaja" layoutX="140.0" layoutY="226.0" />
+            <TextField fx:id="txtCelular" layoutX="140.0" layoutY="278.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="344.0" prefHeight="56.0" prefWidth="371.0" style="-fx-background-color: lightgray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="344.0">
+         <children>
+            <Button fx:id="btnCancelar" layoutX="71.0" layoutY="15.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+            <Button fx:id="btnConfirmar" layoutX="213.0" layoutY="15.0" mnemonicParsing="false" onAction="#confirmar" text="Confirmar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
