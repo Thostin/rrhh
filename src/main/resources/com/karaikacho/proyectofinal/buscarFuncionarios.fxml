@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="433.0" prefWidth="802.0" styleClass="table-card" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="433.0" prefWidth="802.0" styleClass="table-card" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.BuscarFuncionariosController">
    <children>
       <TextField fx:id="txtBuscar" layoutX="13.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="566.0" promptText="🔍" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <TableView fx:id="tablaFuncionarios" layoutX="14.0" layoutY="68.0" onMouseClicked="#guardarSeleccion" prefHeight="253.0" prefWidth="566.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="68.0">

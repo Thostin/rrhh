@@ -15,13 +15,13 @@ import java.sql.SQLException;
  * @author thotstin
  */
 public class ConnectionPool {
-    private static final HikariDataSource dataSource;
-
-    static {
+    private static HikariDataSource dataSource;
+    
+    public static void init(String username, String password){
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:mysql://localhost:3306/horariosrrhh");
-        config.setUsername("root");
-        config.setPassword("");
+        config.setUsername(username);
+        config.setPassword(password);
         config.setMaximumPoolSize(10); // Max 10 active connections
         dataSource = new HikariDataSource(config);
     }
