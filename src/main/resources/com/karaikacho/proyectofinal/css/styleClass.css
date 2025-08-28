@@ -127,8 +127,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 /* ============================
    Filas / celdas (card rows opcional)
    ============================ */
-.table-row-cell { -fx-padding: 6 0; -fx-background-color: transparent; }
-.table-row-cell .cell { -fx-text-fill: #1E3A8A; }
+.table-row-cell {
+    -fx-padding: 6 0;
+    -fx-background-color: transparent;
+}
+.table-row-cell .cell {
+    -fx-text-fill: #1E3A8A;
+}
 
 /* alternancia suave con bordes azules */
 .table-row-cell:odd .cell {
@@ -149,7 +154,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 /* Hover/selección */
-.table-row-cell:hover .cell { -fx-background-color: rgba(59,130,246,0.08); -fx-cursor: hand; }
+.table-row-cell:hover .cell {
+    -fx-background-color: rgba(59,130,246,0.08);
+    -fx-cursor: hand;
+}
 .table-row-cell:filled:selected .cell {
     -fx-background-color: linear-gradient(to right, rgba(59,130,246,0.20), rgba(249,250,251,0.06));
     -fx-text-fill: #1E3A8A;
@@ -159,7 +167,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 /* ============================
    Variante: filas tipo tarjeta (activar con styleClass="table-card card-rows")
    ============================ */
-.table-card.card-rows .table-row-cell { -fx-padding: 10 0; }
+.table-card.card-rows .table-row-cell {
+    -fx-padding: 10 0;
+}
 
 .table-card.card-rows .table-row-cell .cell {
     -fx-background-color: #F9FAFB;
@@ -190,7 +200,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 1;
 }
 .btn-primary {/*btn azul*/
-    -fx-background-color: linear-gradient(to right, #3B82F6, #2b6fe0); 
+    -fx-background-color: linear-gradient(to right, #3B82F6, #2b6fe0);
     -fx-text-fill: #F9FAFB;
     -fx-border-color: #000000; /* borde negro también en botones primarios si querés */
     -fx-background-radius: 12;
@@ -211,8 +221,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-radius: 12;
 }
 /* Textos */
-.label, .text { -fx-text-fill: #F9FAFB; }
-.table-card .label, .table-card .text, .anchor-pane .label, .anchor-pane .text { -fx-text-fill: #1E3A8A; }
+.label, .text {
+    -fx-text-fill: #F9FAFB;
+}
+.table-card .label, .table-card .text, .anchor-pane .label, .anchor-pane .text {
+    -fx-text-fill: #1E3A8A;
+}
 
 .txt-title{/*Titulos*/
     -fx-font-size: 20;
