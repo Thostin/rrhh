@@ -34,7 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 /* Contenedor tarjeta para TableView */
 .table-card {
-    -fx-background-color: #3160ED;
+    -fx-background-color: #1447E1;
     -fx-background-radius: 12;   /* radio: 12 */
     -fx-border-radius: 12;       /* mismo radio */
     -fx-border-color: #000000;   /* borde negro */
@@ -62,6 +62,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-radius: 12;
     -fx-border-color: #000000;   /* borde negro en TableView */
     -fx-background-radius: 1;
+    -fx-text-fill: #F9FAFB;
+    -fx-font-weight: 700;
+    -fx-font-size: 10px;
 }
 .table-view .viewport {
     -fx-background-color: transparent;
