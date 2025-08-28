@@ -187,8 +187,22 @@ ORDER BY n1.hora;
 
         ArrayList<Par> paresRegistros = new ArrayList();
 
+        int diaAux = 8;
+        int aux;
         for (ParDateTime intervalo : paresRegistrosDirecto) {
-            paresRegistros.add(new Par(toMinute(intervalo.inicio), toMinute(intervalo.fin)));
+            if (intervalo.inicio.getDayOfWeek().getValue() != diaAux) {
+                diaAux = intervalo.inicio.getDayOfWeek().getValue();
+                for (Par horario : paresHorarioFijos) {
+                    if (1 + horario.inicio / 1440 == diaAux) {
+                        aux = toMinute(intervalo.inicio);
+                        // Para evitar contar presencia antes del primer horario del dia
+                        paresRegistros.add(new Par(aux < horario.inicio ? horario.inicio : aux, toMinute(intervalo.fin)));
+                        break;
+                    }
+                }
+            } else {
+                paresRegistros.add(new Par(toMinute(intervalo.inicio), toMinute(intervalo.fin)));
+            }
         }
 
         int horaInicioHorario = 0, horaInicioRegistro = 0, horaFinHorario = 0, horaFinRegistro = 0;
@@ -196,8 +210,8 @@ ORDER BY n1.hora;
         int sumaAporteTotal = 0;
         int sumaFaltas = 0;
         int falta;
-        int diaX = 0;
-        int cantidadDias = 0;
+        int diaX;
+        int cantidadDias;
         for (Par intervaloHorario : paresHorarioFijos) {
             diaX = 1 + intervaloHorario.inicio / 1440;
             cantidadDias = diasEnMedio(diaX, inicio, fin);
@@ -217,9 +231,39 @@ ORDER BY n1.hora;
                         + semiMu(horaFinHorario - horaFinRegistro);
                 sumaAporte += semiMu(horaFinHorario - horaInicioHorario - falta);
             }
+
             sumaFaltas += cantidadDias * (horaFinHorario - horaInicioHorario) - sumaAporte;
             sumaAporteTotal += sumaAporte;
             sumaAporte = 0;
+        }
+
+        Par doceuna = new Par(12 * 60, 13 * 60);
+        int sumaTotalDoceUna = 0;
+        for (Par intervaloRegistro : paresRegistros) {
+            horaInicioHorario = doceuna.inicio;
+            horaInicioRegistro = intervaloRegistro.inicio;
+
+            horaFinHorario = doceuna.fin;
+            horaFinRegistro = intervaloRegistro.fin;
+
+            falta
+                    = semiMu(horaInicioRegistro - horaInicioHorario)
+                    + semiMu(horaFinHorario - horaFinRegistro);
+            sumaTotalDoceUna += semiMu(horaFinHorario - horaInicioHorario - falta);
+        }
+
+        int sumaTotalHorarioDoceUna = 0;
+        for (Par intervaloHorario : paresHorarioFijos) {
+            horaInicioHorario = doceuna.inicio;
+            horaInicioRegistro = intervaloHorario.inicio % 1440;
+
+            horaFinHorario = doceuna.fin;
+            horaFinRegistro = intervaloHorario.fin % 1440;
+
+            falta
+                    = semiMu(horaInicioRegistro - horaInicioHorario)
+                    + semiMu(horaFinHorario - horaFinRegistro);
+            sumaTotalHorarioDoceUna += semiMu(horaFinHorario - horaInicioHorario - falta) * diasEnMedio(1 + intervaloHorario.inicio / 1440, inicio, fin);
         }
 
         int horas = sumaFaltas / 60;
@@ -235,6 +279,6 @@ ORDER BY n1.hora;
             sumaHoraTotal += intervalo.fin - intervalo.inicio;
         }
 
-        System.out.println("Total de tiempo compensado: " + (sumaHoraTotal - sumaAporteTotal));
+        System.out.println("Total de tiempo compensado: " + (sumaHoraTotal - sumaAporteTotal - sumaTotalDoceUna + sumaTotalHorarioDoceUna));
     }
 }

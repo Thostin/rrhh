@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.GeneralController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.GeneralController">
    <children>
       <Pane layoutX="7.0" layoutY="8.0" prefHeight="269.0" prefWidth="393.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
          <children>
@@ -14,6 +14,7 @@
             <Button fx:id="btnCursos" layoutX="426.0" layoutY="234.0" mnemonicParsing="false" onAction="#cursos" text="Cursos" />
             <Button fx:id="btnMarcar" layoutX="426.0" layoutY="298.0" mnemonicParsing="false" onAction="#marcar" text="Marcar" />
             <Button fx:id="btnChequear" layoutX="81.0" layoutY="302.0" mnemonicParsing="false" onAction="#chequear" text="Chequear" />
+            <Button layoutX="81.0" layoutY="257.0" mnemonicParsing="false" text="Horarios no compensados General" />
          </children>
       </Pane>
    </children>
