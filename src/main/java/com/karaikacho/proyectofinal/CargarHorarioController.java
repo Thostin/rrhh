@@ -188,7 +188,7 @@ public class CargarHorarioController implements Initializable {
                     = new DbOcupacion(
                             ObjetosEstaticos.detalleOcupacionModificar.getOcupacion().getId(),
                             horaInicio.getHour() * 60 + horaInicio.getMinute() + 1440 * dia,
-                            horaFin.getHour() * 60 + horaInicio.getMinute() + 1440 * dia,
+                            horaFin.getHour() * 60 + horaFin.getMinute() + 1440 * dia,
                             ObjetosEstaticos.funcionarioSeleccion.getId(),
                             ObjetosEstaticos.salaSeleccion.getId(),
                             esComp);
