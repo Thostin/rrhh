@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.ModificarHorarioController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="848.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.ModificarHorarioController">
    <children>
       <TableView fx:id="tablaHorario" layoutX="60.0" layoutY="58.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>

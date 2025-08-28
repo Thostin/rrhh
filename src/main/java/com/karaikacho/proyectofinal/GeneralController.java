@@ -33,6 +33,8 @@ public class GeneralController implements Initializable {
     private Button btnCursos;
     @FXML
     private Button btnMarcar;
+    @FXML
+    private Button btnChequear;
 
     /**
      * Initializes the controller class.
@@ -83,6 +85,11 @@ public class GeneralController implements Initializable {
     @FXML
     private void marcar(ActionEvent event) {
         abrirFXML("marcar.fxml", "Marcar");
+    }
+
+    @FXML
+    private void chequear(ActionEvent event) {
+        abrirFXML("chequearFuncionario.fxml", "Chequear");
     }
 
 }

@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
    ============================ */
 
 .root {
-    -fx-background-color: #1447E1;
+    -fx-background-color: #070ADA;
     -fx-font-family: "Segoe UI", Roboto, Arial, sans-serif;
     -fx-text-fill: #F9FAFB;
 }
@@ -34,7 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 /* Contenedor tarjeta para TableView */
 .table-card {
-    -fx-background-color: #1447E1;
+    -fx-background-color: #1E51EB;
     -fx-background-radius: 12;   /* radio: 12 */
     -fx-border-radius: 12;       /* mismo radio */
     -fx-border-color: #000000;   /* borde negro */
@@ -214,5 +214,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .label, .text { -fx-text-fill: #F9FAFB; }
 .table-card .label, .table-card .text, .anchor-pane .label, .anchor-pane .text { -fx-text-fill: #1E3A8A; }
 
-
-
+.txt-title{/*Titulos*/
+    -fx-font-size: 20;
+    -fx-alignment: center;
+}

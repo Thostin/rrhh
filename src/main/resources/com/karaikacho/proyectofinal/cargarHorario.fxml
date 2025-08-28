@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.CargarHorarioController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.CargarHorarioController">
    <children>
-      <Pane layoutX="30.0" layoutY="26.0" prefHeight="340.0" prefWidth="543.0" style="-fx-background-color: gray;">
+      <Pane layoutX="30.0" layoutY="26.0" prefHeight="340.0" prefWidth="543.0" style="-fx-background-color: blue;">
          <children>
             <TextField fx:id="txtHoraInicio" layoutX="14.0" layoutY="39.0" promptText="HH:mm" />
             <TextField fx:id="txtHoraFin" layoutX="304.0" layoutY="39.0" promptText="HH:mm" />

@@ -29,7 +29,7 @@
             <Button fx:id="btnModificar" layoutX="108.0" layoutY="29.0" mnemonicParsing="false" onAction="#modificar" styleClass="btn-accent" text="Modificar" />
             <Button fx:id="btnEliminar" layoutX="202.0" layoutY="29.0" mnemonicParsing="false" onAction="#eliminar" styleClass="btn-accent" text="Eliminar" />
             <Button fx:id="btnCancelar" layoutX="334.0" layoutY="29.0" mnemonicParsing="false" onAction="#cancelar" styleClass="btn-accent" text="Cancelar" />
-            <Button fx:id="btnVerHorario" layoutX="421.0" layoutY="29.0" mnemonicParsing="false" onAction="#verHorario" prefHeight="33.0" prefWidth="114.0" text="Ver horario" />
+            <Button fx:id="btnVerHorario" layoutX="443.0" layoutY="28.0" mnemonicParsing="false" onAction="#verHorario" prefHeight="33.0" prefWidth="114.0" styleClass="btn-accent" text="Ver horario" />
          </children>
       </AnchorPane>
    </children>
