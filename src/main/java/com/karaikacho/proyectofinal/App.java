@@ -31,7 +31,7 @@ public class App extends Application {
         } else {
             System.out.println("Se ha cancelado la insercion");
         }*/
-        FuncionarioChecker.checkHorarioFuncionario(23, LocalDate.now().minusDays(1), LocalDate.now());
+        // FuncionarioChecker.checkHorarioFuncionario(23, LocalDate.now().minusDays(1), LocalDate.now());
     }
 
     static void setRoot(String fxml) throws IOException {

@@ -179,7 +179,9 @@ ORDER BY n1.hora;
     // El sistema es bastante flexible, no se es necesario comparar fecha por fecha, pero
     // si hubo o no solapamiento y cuanto suman esos solapamientos
     // Despues hay que saber cuantas veces hay esa ocupacion en ese intervalo de fechas simplemente
-    public static void checkHorarioFuncionario(int idFuncionario, LocalDate inicio, LocalDate fin) {
+    public static void checkHorarioFuncionario(DbFuncionario funcionario, LocalDate inicio, LocalDate fin) {
+        int idFuncionario = funcionario.getId();
+
         ArrayList<Par> paresHorarioFijos = getHorasFijas(idFuncionario);
         ArrayList<ParDateTime> paresRegistrosDirecto = getRegistros(idFuncionario, inicio, fin);
 
