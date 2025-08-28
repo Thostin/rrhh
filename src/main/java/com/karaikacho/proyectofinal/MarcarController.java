@@ -112,7 +112,7 @@ public class MarcarController implements Initializable {
     private void marcar(ActionEvent event) {
         DateTimeFormatter hhmm = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime horaAux = LocalTime.parse(txtHora.getText(), hhmm);
-        // Combine with today's date
+
         LocalDateTime hora = LocalDateTime.of(datePickerFecha.getValue(), horaAux);
 
         // Variable para guardar la clave generada
