@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class GeneralController implements Initializable {
+public class GeneralController extends OpensFXML implements Initializable {
 
     @FXML
     private Button btnFuncionarios;
@@ -43,53 +44,47 @@ public class GeneralController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     @FXML
     private void funcionarios(ActionEvent event) {
-        abrirFXML("acceso.fxml", "Funcionarios");
+        btnFuncionarios.setDisable(true);
+        abrirFXML("acceso.fxml", "Funcionarios", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        btnFuncionarios.setDisable(false);
     }
 
     @FXML
     private void salas(ActionEvent event) {
-        abrirFXML("salas.fxml", "Salas");
+        btnSalas.setDisable(true);
+        abrirFXML("salas.fxml", "Salas", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        btnSalas.setDisable(false);
     }
 
     @FXML
     private void especialidades(ActionEvent event) {
-        abrirFXML("especialidades.fxml", "Especialidades");
+        btnEspecialidades.setDisable(true);
+        abrirFXML("especialidades.fxml", "Especialidades", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        btnEspecialidades.setDisable(false);
     }
 
     @FXML
     private void cursos(ActionEvent event) {
-        abrirFXML("cursos.fxml", "Cursos");
+        btnCursos.setDisable(true);
+        abrirFXML("cursos.fxml", "Cursos", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        btnCursos.setDisable(false);
     }
 
     @FXML
     private void marcar(ActionEvent event) {
-        abrirFXML("marcar.fxml", "Marcar");
+        btnMarcar.setDisable(true);
+        abrirFXML("marcar.fxml", "Marcar", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        btnMarcar.setDisable(false);
     }
 
     @FXML
     private void chequear(ActionEvent event) {
-        abrirFXML("chequearFuncionario.fxml", "Chequear");
+        btnChequear.setDisable(true);
+        abrirFXML("chequearFuncionario.fxml", "Chequear", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        btnChequear.setDisable(false);
     }
 
 }

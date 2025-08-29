@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.MiniLoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.MiniLoginController">
    <children>
       <Pane layoutX="37.0" layoutY="43.0" prefHeight="315.0" prefWidth="526.0">
          <children>
             <Button fx:id="btnAcceder" layoutX="203.0" layoutY="251.0" mnemonicParsing="false" onAction="#acceder" text="Acceder" />
-            <TextField fx:id="txtUsuario" layoutX="189.0" layoutY="81.0" />
-            <TextField fx:id="txtContrasena" layoutX="182.0" layoutY="165.0" />
+            <TextField fx:id="txtUsuario" layoutX="189.0" layoutY="81.0" onAction="#acceder" />
+            <TextField fx:id="txtContrasena" layoutX="182.0" layoutY="165.0" onAction="#acceder" />
             <Label layoutX="110.0" layoutY="85.0" text="Usuario" />
             <Label layoutX="87.0" layoutY="178.0" text="Contrasena" />
             <Label layoutX="161.0" layoutY="20.0" prefHeight="33.0" prefWidth="219.0" text="ACCEDER A LA BASE DE DATOS" />
