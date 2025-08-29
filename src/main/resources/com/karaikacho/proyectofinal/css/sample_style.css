@@ -1,0 +1,35 @@
+.side_ankerpane{
+    -fx-background-color: #353A56;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.inner_pane{
+    -fx-background-color: #748CF1;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+.most_inner_pane{
+    -fx-background-color: #6780E2;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+.btnFuncionarios{
+    -fx-background-color: #303551;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #141313;
+}

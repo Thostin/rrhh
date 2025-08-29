@@ -1,21 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.GeneralController">
+<HBox prefHeight="366.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="7.0" layoutY="8.0" prefHeight="269.0" prefWidth="393.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+      <VBox prefHeight="476.0" prefWidth="786.0">
          <children>
-            <Button fx:id="btnFuncionarios" layoutX="426.0" layoutY="45.0" mnemonicParsing="false" onAction="#funcionarios" text="Funcionarios" />
-            <Button fx:id="btnSalas" layoutX="426.0" layoutY="106.0" mnemonicParsing="false" onAction="#salas" text="Salas" />
-            <Button fx:id="btnEspecialidades" layoutX="426.0" layoutY="167.0" mnemonicParsing="false" onAction="#especialidades" text="Especialidades" />
-            <Button fx:id="btnCursos" layoutX="426.0" layoutY="234.0" mnemonicParsing="false" onAction="#cursos" text="Cursos" />
-            <Button fx:id="btnMarcar" layoutX="426.0" layoutY="298.0" mnemonicParsing="false" onAction="#marcar" text="Marcar" />
-            <Button fx:id="btnChequear" layoutX="81.0" layoutY="302.0" mnemonicParsing="false" onAction="#chequear" text="Chequear" />
-            <Button layoutX="81.0" layoutY="257.0" mnemonicParsing="false" text="Horarios no compensados General" />
+            <AnchorPane fx:id="side_ankerpane" prefHeight="476.0" prefWidth="705.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css">
+               <children>
+                  <Button fx:id="btnSalas" layoutX="350.0" layoutY="319.0" mnemonicParsing="false" onAction="#salas" text="Salas" />
+                  <Button fx:id="btnFuncionarios" layoutX="595.0" layoutY="293.0" mnemonicParsing="false" onAction="#funcionarios" text="Funcionarios" />
+                  <Button fx:id="btnEspecialidades" layoutX="528.0" layoutY="319.0" mnemonicParsing="false" onAction="#especialidades" text="Especialidades" />
+                  <Button layoutX="462.0" layoutY="260.0" mnemonicParsing="false" text="Horarios no compensados General" />
+                  <Button fx:id="btnCursos" layoutX="436.0" layoutY="319.0" mnemonicParsing="false" onAction="#cursos" text="Cursos" />
+                  <Button fx:id="btnMarcar" layoutX="491.0" layoutY="285.0" mnemonicParsing="false" onAction="#marcar" text="Marcar" />
+                  <Button fx:id="btnChequear" layoutX="376.0" layoutY="280.0" mnemonicParsing="false" onAction="#chequear" text="Chequear" />
+                  <Pane fx:id="inner_pane" layoutX="11.0" layoutY="22.0" prefHeight="78.0" prefWidth="722.0" styleClass="inner_pane" stylesheets="@css/sample_style.css">
+                     <children>
+                        <ImageView fitHeight="78.0" fitWidth="93.0" layoutX="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/logo.1.png" />
+                           </image>
+                        </ImageView>
+                        <Pane fx:id="most_inner_pane" layoutX="641.0" layoutY="6.0" prefHeight="66.0" prefWidth="54.0" styleClass="most_inner_pane" stylesheets="@css/sample_style.css">
+                           <children>
+                              <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="7.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../image/3dots-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <JFXTextArea layoutX="153.0" layoutY="6.0" prefHeight="26.0" prefWidth="475.0" text="CTN Recursos Humanos">
+                           <font>
+                              <Font name="Britannic Bold" size="40.0" />
+                           </font>
+                        </JFXTextArea>
+                     </children>
+                  </Pane>
+                  <JFXButton layoutX="11.0" layoutY="122.0" prefHeight="41.0" prefWidth="218.0" styleClass="btnFuncionarios" stylesheets="@css/sample_style.css" text="Funcionarios" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/funcionario2-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="11.0" layoutY="186.0" prefHeight="51.0" prefWidth="218.0" styleClass="btnFuncionarios" stylesheets="@css/sample_style.css" text="Especialidades" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/especialidad1-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="480.0" layoutY="188.0" prefHeight="51.0" prefWidth="218.0" styleClass="btnFuncionarios" stylesheets="@css/sample_style.css" text="Marcar" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/marcar-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="252.0" layoutY="188.0" prefHeight="51.0" prefWidth="218.0" styleClass="btnFuncionarios" stylesheets="@css/sample_style.css" text="Chaequear" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/check-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="252.0" layoutY="122.0" prefHeight="41.0" prefWidth="218.0" styleClass="btnFuncionarios" stylesheets="@css/sample_style.css" text="Salas" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/sala-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="11.0" layoutY="259.0" prefHeight="58.0" prefWidth="302.0" styleClass="btnFuncionarios" stylesheets="@css/sample_style.css" text="Horarios no completados General" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/horario-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="480.0" layoutY="122.0" prefHeight="41.0" prefWidth="218.0" styleClass="btnFuncionarios" stylesheets="@css/sample_style.css" text="Cursos" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../image/curso-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
          </children>
-      </Pane>
+      </VBox>
    </children>
-</AnchorPane>
+</HBox>
