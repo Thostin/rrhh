@@ -4,31 +4,30 @@
  */
 package com.karaikacho.proyectofinal;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 /**
  * FXML Controller class
  *
  * @author thotstin
  */
-public class GeneralController extends OpensFXML implements Initializable {
+public class GeneralController1 extends OpensFXML implements Initializable {
 
-
-    @FXML
-    private AnchorPane side_ankerpane;
-    @FXML
-    private Button btnSalas;
     @FXML
     private Button btnFuncionarios;
+    @FXML
+    private Button btnSalas;
     @FXML
     private Button btnEspecialidades;
     @FXML
@@ -37,17 +36,14 @@ public class GeneralController extends OpensFXML implements Initializable {
     private Button btnMarcar;
     @FXML
     private Button btnChequear;
-    @FXML
-    private Pane inner_pane;
-    @FXML
-    private Pane most_inner_pane;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
     
     @FXML
     private void funcionarios(ActionEvent event) {
