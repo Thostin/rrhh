@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -38,7 +39,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class MarcarController implements Initializable {
+public class MarcarController extends OpensFXML implements Initializable {
 
     @FXML
     private TextField txtFuncionario;
@@ -76,34 +77,16 @@ public class MarcarController implements Initializable {
         });
     }
 
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void buscarFuncionario(ActionEvent event) {
-        abrirFXML("buscarFuncionarios.fxml", "Buscar Funcionario");
+        abrirFXML("buscarFuncionarios.fxml", "Buscar Funcionario", (Stage) ((Node) event.getSource()).getScene().getWindow());
         txtFuncionario.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
         funcionarioSeleccionado = ObjetosEstaticos.funcionarioSeleccion;
     }
 
     @FXML
     private void buscarReemplazante(ActionEvent event) {
-        abrirFXML("buscarFuncionarios.fxml", "Buscar Reemplazante");
+        abrirFXML("buscarFuncionarios.fxml", "Buscar Reemplazante", (Stage) ((Node) event.getSource()).getScene().getWindow());
         txtReemplazante.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
         funcionarioReemplazante = ObjetosEstaticos.funcionarioSeleccion;
     }

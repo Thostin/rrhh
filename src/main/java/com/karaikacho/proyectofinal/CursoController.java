@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class CursoController implements Initializable {
+public class CursoController extends OpensFXML implements Initializable {
 
     @FXML
     private TextField txtNombre;
@@ -66,27 +66,10 @@ public class CursoController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-            
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
     @FXML
     private void buscarEspecialidad(ActionEvent event) {
-        abrirFXML("buscarEspecialidades.fxml", "Buscar Especialidades");
+        abrirFXML("buscarEspecialidades.fxml", "Buscar Especialidades", (Stage) ((Node) event.getSource()).getScene().getWindow());
         txtEspecialidad.setText(ObjetosEstaticos.especialidadSeleccion.getNombre());
     }
     
