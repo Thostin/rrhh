@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -52,15 +53,29 @@ public class MiniLoginController implements Initializable {
             stage.setResizable(false); // optional: prevents resizing
 
             stage.setScene(new Scene(root));
+
+            stage.setOnHidden(e -> {
+                Runtime runtime = Runtime.getRuntime();
+                long usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / (1024 * 1024);
+                long maxMemory = runtime.maxMemory() / (1024 * 1024);
+
+                System.out.println("Memoria usada: " + usedMemory + " MB / " + maxMemory + " MB");
+            });
+
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     private void acceder(ActionEvent event) {
+        btnAcceder.setDisable(true); // Para evitar un posible bug
         ConnectionPool.init(txtUsuario.getText(), txtContrasena.getText());
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
         abrirFXML("general.fxml", "Pagina principal");
     }
 

@@ -33,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class EspecialidadesController implements Initializable {
+public class EspecialidadesController extends OpensFXML implements Initializable {
 
     ArrayList<DbEspecialidad> registrosBase = null;
     ObservableList<DbEspecialidad> registros = null;
@@ -70,27 +70,9 @@ public class EspecialidadesController implements Initializable {
         tablaEspecialidades.setItems(registros);
     }
 
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-            
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-            
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void nuevo(ActionEvent event) {
-        abrirFXML("especialidad.fxml", "Anadir Especialidad");
+        abrirFXML("especialidad.fxml", "Anadir Especialidad", (Stage) ((Node) event.getSource()).getScene().getWindow());
         DbEspecialidad especialidad;
         if (ObjetosEstaticos.confirmado == true) {
             ObjetosEstaticos.confirmado = false;
@@ -154,7 +136,7 @@ public class EspecialidadesController implements Initializable {
             DbEspecialidad aux = ObjetosEstaticos.especialidad;
             ObjetosEstaticos.especialidad = especialidadSeleccionadaModificar;
 
-            abrirFXML("especialidad.fxml", "Modificar Especialidad");
+            abrirFXML("especialidad.fxml", "Modificar Especialidad", (Stage) ((Node) event.getSource()).getScene().getWindow());
             ObjetosEstaticos.reloadEspecialidad = null;
             ObjetosEstaticos.especialidad = aux;
             tablaEspecialidades.refresh();

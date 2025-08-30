@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class CargarHorarioController implements Initializable {
+public class CargarHorarioController extends OpensFXML implements Initializable {
 
     @FXML
     private TextField txtHoraInicio;
@@ -79,7 +79,8 @@ public class CargarHorarioController implements Initializable {
             btnBuscarFuncionario.setDisable(true);
             txtFuncionario.setText(ObjetosEstaticos.funcionarioCargarHorario.getNombres());
             txtSala.setText(ObjetosEstaticos.detalleOcupacionModificar.getSala());
-
+            cmbDia.getSelectionModel().select(ObjetosEstaticos.ocupacionModificar.getHoraInicio()/1440);
+            
             if (ObjetosEstaticos.detalleOcupacionModificar.getEsCompensado().equals("Si")) {
                 cmbEsCompensatorio.getSelectionModel().select("Si");
             }
@@ -112,33 +113,16 @@ public class CargarHorarioController implements Initializable {
         });
     }
 
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void buscarFuncionario(ActionEvent event) {
-        abrirFXML("buscarFuncionarios.fxml", "Seleccionar Funcionario");
+        abrirFXML("buscarFuncionarios.fxml", "Seleccionar Funcionario", (Stage) ((Node) event.getSource()).getScene().getWindow());
         txtFuncionario.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres()
                 + " " + ObjetosEstaticos.funcionarioSeleccion.getApellidos());
     }
 
     @FXML
     private void buscarSala(ActionEvent event) {
-        abrirFXML("buscarSalas.fxml", "Seleccionar Funcionario");
+        abrirFXML("buscarSalas.fxml", "Seleccionar Funcionario",(Stage) ((Node) event.getSource()).getScene().getWindow());
         txtSala.setText(ObjetosEstaticos.salaSeleccion.getNombre());
     }
 

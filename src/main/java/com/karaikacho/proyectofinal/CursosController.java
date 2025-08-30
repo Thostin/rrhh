@@ -33,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class CursosController implements Initializable {
+public class CursosController extends OpensFXML implements Initializable {
 
     ArrayList<DbCurso> registrosBase = null;
     ObservableList<DbCurso> registros = null;
@@ -73,27 +73,9 @@ public class CursosController implements Initializable {
         tablaCursos.setItems(registros);
     }
 
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-            
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-            
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void nuevo(ActionEvent event) {
-        abrirFXML("curso.fxml", "Anadir Curso");
+        abrirFXML("curso.fxml", "Anadir Curso", (Stage) ((Node) event.getSource()).getScene().getWindow());
         DbCurso curso;
         if (ObjetosEstaticos.confirmado == true) {
             ObjetosEstaticos.confirmado = false;
@@ -158,7 +140,7 @@ public class CursosController implements Initializable {
             DbCurso aux = ObjetosEstaticos.curso;
             ObjetosEstaticos.curso = cursoSeleccionadaModificar;
 
-            abrirFXML("curso.fxml", "Modificar Curso");
+            abrirFXML("curso.fxml", "Modificar Curso", (Stage) ((Node) event.getSource()).getScene().getWindow());
             ObjetosEstaticos.reloadCurso = null;
             ObjetosEstaticos.curso = aux;
             tablaCursos.refresh();

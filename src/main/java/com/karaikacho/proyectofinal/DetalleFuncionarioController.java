@@ -36,7 +36,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class DetalleFuncionarioController implements Initializable {
+public class DetalleFuncionarioController extends OpensFXML implements Initializable {
 
     ObservableList<DetalleFuncionario> registros = null;
 
@@ -77,23 +77,6 @@ public class DetalleFuncionarioController implements Initializable {
         tablaHorarios.setItems(registros);
     }
 
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void volver(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -107,7 +90,7 @@ public class DetalleFuncionarioController implements Initializable {
     @FXML
     private void anadirHorario(ActionEvent event) {
         ObjetosEstaticos.tieneFuncionario = true;
-        abrirFXML("cargarHorario.fxml", "Cargar horario de " + ObjetosEstaticos.funcionarioCargarHorario.getNombres());
+        abrirFXML("cargarHorario.fxml", "Cargar horario de " + ObjetosEstaticos.funcionarioCargarHorario.getNombres(), (Stage) ((Node) event.getSource()).getScene().getWindow());
 
         tablaHorarios.setItems(FXCollections.observableArrayList(DetalleFuncionario.readAll(ObjetosEstaticos.idFuncionario)));
     }
@@ -123,9 +106,7 @@ public class DetalleFuncionarioController implements Initializable {
         ObjetosEstaticos.ocupacionModificar = ocupacionEditar.getOcupacion();
         ObjetosEstaticos.detalleOcupacionModificar = ocupacionEditar;
 
-        System.out.println("ID DE LA OCUPACION ANTES DE PASAR: " + ObjetosEstaticos.detalleOcupacionModificar.getOcupacion().getId());
-
-        abrirFXML("cargarHorario.fxml", "Editar Horario de " + ObjetosEstaticos.funcionarioCargarHorario.getNombres());
+        abrirFXML("cargarHorario.fxml", "Editar Horario de " + ObjetosEstaticos.funcionarioCargarHorario.getNombres(), (Stage) ((Node) event.getSource()).getScene().getWindow());
 
         tablaHorarios.setItems(FXCollections.observableArrayList(DetalleFuncionario.readAll(ObjetosEstaticos.idFuncionario)));
     }

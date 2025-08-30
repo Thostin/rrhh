@@ -32,7 +32,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class ModificarHorarioController implements Initializable {
+public class ModificarHorarioController extends OpensFXML implements Initializable {
 
     @FXML
     private TableView<FilaDato> tablaHorario;
@@ -113,35 +113,15 @@ public class ModificarHorarioController implements Initializable {
         stage.close();
     }
 
-    
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-            stage.setScene(new Scene(root));
-
-            // Dos lineas de chatgpt:
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
     @FXML
     private void buscarSala(ActionEvent event) {
-        abrirFXML("buscarSala.fxml", "Buscar Sala");
+        abrirFXML("buscarSala.fxml", "Buscar Sala", (Stage) ((Node) event.getSource()).getScene().getWindow());
         txtSala.setText(ObjetosEstaticos.salaSeleccion.getNombre());
     }
 
     @FXML
     private void buscarCurso(ActionEvent event) {
-        abrirFXML("buscarCursos.fxml", "Buscar Cursos");
+        abrirFXML("buscarCursos.fxml", "Buscar Cursos", (Stage) ((Node) event.getSource()).getScene().getWindow());
     }
 
     public static class FilaDato {

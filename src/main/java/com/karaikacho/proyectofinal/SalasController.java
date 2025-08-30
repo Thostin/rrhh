@@ -32,7 +32,7 @@ import javafx.stage.Stage;
  *
  * @author thotstin
  */
-public class SalasController implements Initializable {
+public class SalasController extends OpensFXML implements Initializable {
 
     ArrayList<DbSala> registrosBase = null;
     ObservableList<DbSala> registros = null;
@@ -69,27 +69,9 @@ public class SalasController implements Initializable {
         tablaSalas.setItems(registros);
     }
 
-    public void abrirFXML(String direccion, String titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccion));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-
-            stage.sizeToScene(); //  this will set the stage size to match the FXML
-            stage.setResizable(false); // optional: prevents resizing
-
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     private void nuevo(ActionEvent event) {
-        abrirFXML("sala.fxml", "Anadir Sala");
+        abrirFXML("sala.fxml", "Anadir Sala", (Stage) ((Node) event.getSource()).getScene().getWindow());
         DbSala sala;
         if (ObjetosEstaticos.confirmado == true) {
             ObjetosEstaticos.confirmado = false;
@@ -155,7 +137,7 @@ public class SalasController implements Initializable {
             DbSala aux = ObjetosEstaticos.sala;
             ObjetosEstaticos.sala = salaSeleccionadaModificar;
 
-            abrirFXML("sala.fxml", "Modificar sala");
+            abrirFXML("sala.fxml", "Modificar sala", (Stage) ((Node) event.getSource()).getScene().getWindow());
             ObjetosEstaticos.reloadSala = null;
             ObjetosEstaticos.sala = aux;
             tablaSalas.refresh();
