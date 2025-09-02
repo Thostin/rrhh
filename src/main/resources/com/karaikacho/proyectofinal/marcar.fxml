@@ -26,7 +26,7 @@
             <Label layoutX="12.0" layoutY="47.0" style="-fx-font-size: 15;" text="Funcionario:" />
             <Label layoutX="14.0" layoutY="106.0" style="-fx-font-size: 15;" text="Hora:" />
             <Label layoutX="8.0" layoutY="228.0" style="-fx-font-size: 15;" text="Reemplazante:" />
-            <TextField fx:id="txtHora" disable="true" layoutX="112.0" layoutY="100.0" prefHeight="31.0" prefWidth="230.0" />
+            <TextField fx:id="txtHora" layoutX="112.0" layoutY="100.0" prefHeight="31.0" prefWidth="364.0" />
          </children>
       </Pane>
       <Pane fx:id="inner_pane" layoutX="41.0" layoutY="24.0" prefHeight="78.0" prefWidth="483.0" styleClass="inner_pane" stylesheets="@css/sample_style.css">
@@ -45,7 +45,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXTextArea layoutX="177.0" layoutY="6.0" prefHeight="99.0" prefWidth="130.0" style="-jfx-unfocus-color: none;" text="Marcar">
+            <JFXTextArea editable="false" layoutX="177.0" layoutY="6.0" prefHeight="99.0" prefWidth="214.0" style="-jfx-unfocus-color: none;" text="Marcar">
                <font>
                   <Font name="Britannic Bold" size="40.0" />
                </font>

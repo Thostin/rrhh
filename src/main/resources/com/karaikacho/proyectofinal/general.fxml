@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="366.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.GeneralController">
+<HBox prefHeight="366.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.GeneralController">
    <children>
       <VBox prefHeight="476.0" prefWidth="786.0">
          <children>
@@ -32,7 +32,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <JFXTextArea layoutX="153.0" layoutY="6.0" prefHeight="26.0" prefWidth="475.0" style="-jfx-unfocus-color: none;" text="CTN Recursos Humanos">
+                        <JFXTextArea editable="false" focusColor="#353a56" layoutX="153.0" layoutY="6.0" prefHeight="26.0" prefWidth="475.0" style="-jfx-unfocus-color: none;" text="CTN Recursos Humanos">
                            <font>
                               <Font name="Britannic Bold" size="40.0" />
                            </font>

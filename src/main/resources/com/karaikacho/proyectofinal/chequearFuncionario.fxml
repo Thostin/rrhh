@@ -42,7 +42,7 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <JFXTextArea layoutX="104.0" layoutY="6.0" prefHeight="99.0" prefWidth="653.0" style="-jfx-unfocus-color: none;" text="Chequea asistencia de funcionario">
+                  <JFXTextArea editable="false" layoutX="104.0" layoutY="6.0" prefHeight="99.0" prefWidth="653.0" style="-jfx-unfocus-color: none;" text="Chequea asistencia de funcionario">
                      <font>
                         <Font name="Britannic Bold" size="40.0" />
                      </font>

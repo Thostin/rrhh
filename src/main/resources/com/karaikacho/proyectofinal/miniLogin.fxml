@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="585.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.MiniLoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="585.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.MiniLoginController">
    <children>
       <Pane layoutX="29.0" layoutY="49.0" prefHeight="315.0" prefWidth="526.0">
          <children>
@@ -33,7 +33,7 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <JFXTextArea layoutX="177.0" layoutY="6.0" prefHeight="99.0" prefWidth="197.0" style="-jfx-unfocus-color: none;" text="Acceder">
+                  <JFXTextArea editable="false" layoutX="177.0" layoutY="6.0" prefHeight="99.0" prefWidth="197.0" style="-jfx-unfocus-color: none;" text="Acceder">
                      <font>
                         <Font name="Britannic Bold" size="40.0" />
                      </font>

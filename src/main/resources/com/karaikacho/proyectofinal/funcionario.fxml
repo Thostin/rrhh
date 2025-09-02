@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="461.0" maxWidth="835.0" minHeight="400.0" minWidth="371.0" prefHeight="400.0" prefWidth="738.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css">
@@ -68,7 +67,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <JFXTextArea layoutX="183.0" layoutY="6.0" prefHeight="41.0" prefWidth="475.0" style="-jfx-unfocus-color: none;" text="Añadir funcionarios">
+                        <JFXTextArea editable="false" layoutX="183.0" layoutY="6.0" prefHeight="41.0" prefWidth="475.0" style="-jfx-unfocus-color: none;" text="Añadir funcionarios">
                            <font>
                               <Font name="Britannic Bold" size="40.0" />
                            </font>

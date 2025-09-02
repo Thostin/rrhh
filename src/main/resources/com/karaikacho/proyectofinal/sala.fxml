@@ -28,7 +28,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXTextArea layoutX="153.0" layoutY="6.0" prefHeight="26.0" prefWidth="475.0" style="-jfx-unfocus-color: none;" text="CTN Recursos Humanos">
+            <JFXTextArea editable="false" layoutX="153.0" layoutY="6.0" prefHeight="26.0" prefWidth="475.0" style="-jfx-unfocus-color: none;" text="CTN Recursos Humanos">
                <font>
                   <Font name="Britannic Bold" size="40.0" />
                </font>
