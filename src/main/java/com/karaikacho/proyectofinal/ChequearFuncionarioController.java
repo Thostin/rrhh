@@ -62,6 +62,7 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
     private void buscarFuncionario(ActionEvent event) {
         abrirFXML("buscarFuncionarios.fxml", "Buscar Funcionario", (Stage) ((Node) event.getSource()).getScene().getWindow());
         funcionarioSeleccionado = ObjetosEstaticos.funcionarioSeleccion;
+        txtFuncionario.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres() + " " + ObjetosEstaticos.funcionarioSeleccion.getApellidos());
     }
 
 }
