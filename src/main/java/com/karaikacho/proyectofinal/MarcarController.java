@@ -30,8 +30,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -58,6 +60,14 @@ public class MarcarController extends OpensFXML implements Initializable {
     private DbFuncionario funcionarioReemplazante = null;
     @FXML
     private Button btnBuscarReemplazante;
+    @FXML
+    private CheckBox esReemplazado;
+    @FXML
+    private Pane paneReemplazante;
+    @FXML
+    private Pane inner_pane;
+    @FXML
+    private Pane most_inner_pane;
 
     /**
      * Initializes the controller class.
@@ -142,5 +152,10 @@ public class MarcarController extends OpensFXML implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(MarcarController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void invertirMostrarReemplazante(ActionEvent event) {
+        paneReemplazante.setVisible(!paneReemplazante.isVisible());
     }
 }
