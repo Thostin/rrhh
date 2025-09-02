@@ -136,7 +136,7 @@ public class MarcarController extends OpensFXML implements Initializable {
             return;
         }
 
-        if (null == funcionarioReemplazante) {
+        if (!esReemplazado.isSelected() || null == funcionarioReemplazante) {
             return;
         }
 
