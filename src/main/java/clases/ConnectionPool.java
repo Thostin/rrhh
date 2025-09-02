@@ -25,7 +25,7 @@ public class ConnectionPool {
         config.setMaximumPoolSize(10); // Max 10 active connections
         dataSource = new HikariDataSource(config);
     }
-    
+
     public static Connection getConnection() throws SQLException{
         return dataSource.getConnection();
     }

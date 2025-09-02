@@ -18,7 +18,6 @@ import java.util.logging.Logger;
  * @author thotstin
  */
 public class DetalleFuncionario {
-
     private DbOcupacion ocupacion;
     private String dia = "";
     private String horaInicio = "";
@@ -84,17 +83,17 @@ public class DetalleFuncionario {
 
     public DetalleFuncionario(DbOcupacion ocupacion) {
         this.ocupacion = ocupacion;
-        System.out.println("ANTES DE CREAR EL DETALLE, ID_OCUPACION = " + ocupacion.getId());
+        //System.out.println("ANTES DE CREAR EL DETALLE, ID_OCUPACION = " + ocupacion.getId());
         loadOcupacion();
 
-        System.out.println("DESPUES DE CREAR EL DETALLE, ID_OCUPACION = " + this.ocupacion.getId());
+        //System.out.println("DESPUES DE CREAR EL DETALLE, ID_OCUPACION = " + this.ocupacion.getId());
     }
 
     public static ArrayList<DetalleFuncionario> readAll(int idFuncionario) {
         ArrayList<DetalleFuncionario> detalles = new ArrayList();
 
         DbOcupacion aux;
-        String sql = "SELECT id, horaInicio, horaFin, idSala, compensatorio FROM Ocupacion WHERE idFuncionario=" + idFuncionario;
+        String sql = "SELECT id, horaInicio, horaFin, idSala, compensatorio FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " ORDER BY horaInicio, horaFin ASC";
         try (Connection con = ConnectionPool.getConnection()) {
             Statement stm = con.createStatement();
             ResultSet resultado = stm.executeQuery(sql);

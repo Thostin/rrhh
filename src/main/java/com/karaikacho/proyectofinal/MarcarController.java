@@ -80,19 +80,28 @@ public class MarcarController extends OpensFXML implements Initializable {
     @FXML
     private void buscarFuncionario(ActionEvent event) {
         abrirFXML("buscarFuncionarios.fxml", "Buscar Funcionario", (Stage) ((Node) event.getSource()).getScene().getWindow());
-        txtFuncionario.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
+        if (null != ObjetosEstaticos.funcionarioSeleccion) {
+            txtFuncionario.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
+        }
+        ObjetosEstaticos.funcionarioSeleccion = null;
         funcionarioSeleccionado = ObjetosEstaticos.funcionarioSeleccion;
     }
 
     @FXML
     private void buscarReemplazante(ActionEvent event) {
         abrirFXML("buscarFuncionarios.fxml", "Buscar Reemplazante", (Stage) ((Node) event.getSource()).getScene().getWindow());
-        txtReemplazante.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
+        if (null != ObjetosEstaticos.funcionarioSeleccion) {
+            txtReemplazante.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
+        }
+        ObjetosEstaticos.funcionarioSeleccion = null;
         funcionarioReemplazante = ObjetosEstaticos.funcionarioSeleccion;
     }
 
     @FXML
     private void marcar(ActionEvent event) {
+        if(funcionarioSeleccionado == null)
+            return;
+        
         DateTimeFormatter hhmm = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime horaAux = LocalTime.parse(txtHora.getText(), hhmm);
 
