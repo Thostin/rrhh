@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
    ============================ */
 
 .root {
-    -fx-background-color: #070ADA;
+    -fx-background-color: #white;
     -fx-font-family: "Segoe UI", Roboto, Arial, sans-serif;
     -fx-text-fill: #F9FAFB;
 }
@@ -50,25 +50,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-prompt-text-fill: rgba(30,58,138,0.45);
     -fx-background-radius: 24;
     -fx-border-radius: 24;
-    -fx-border-color: #3B82F6;
+    -fx-border-color: none;
     -fx-border-width: 1;
     -fx-padding: 8 14 8 40;
 }
 
 /* TableView base y viewport */
 .table-view {
-    -fx-background-color: transparent;
+    -fx-background-color: #748CF1;
     -fx-background-radius: 12;   /* radio para que coincida si se mostrara */
     -fx-border-radius: 12;
     -fx-border-color: #000000;   /* borde negro en TableView */
     -fx-background-radius: 1;
-    -fx-text-fill: #F9FAFB;
+    -fx-text-fill: #748CF1;
     -fx-font-weight: 700;
     -fx-font-size: 10px;
 }
 .table-view .viewport {
     -fx-background-color: transparent;
     -fx-background-insets: 0;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;   /* radio para que coincida si se mostrara */
     -fx-border-radius: 12;
 }
 
@@ -80,11 +82,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header-background,
 .root .table-view .column-header-background,
 .table-view .table-column-header-background {
-    -fx-background-color: linear-gradient(to bottom, #3B82F6, #2f6fe0);
+    -fx-background-color: linear-gradient(to bottom, #748CF1, whitesmoke);
     -fx-background-radius: 12 12 0 0; /* curvatura superior igual al contenedor */
-    -fx-border-color: #000000;        /* borde negro alrededor del header */
+    -fx-border-color: #353A56;        /* borde negro alrededor del header */
     -fx-border-width: 0 0 1 0;        /* borde inferior si querés separador (aquí 1px) */
     -fx-padding: 6 8;
+    
 }
 
 /* Algunas versiones/skins usan ".table-column-header" */
@@ -93,10 +96,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header,
 .table-view .column-header .label {
     -fx-background-color: transparent;
-    -fx-text-fill: #F9FAFB;
+    -fx-text-fill: #748CF1;
     -fx-font-weight: 700;
     -fx-font-size: 13px;
     -fx-alignment: CENTER;
+    
 }
 
 /* Si el header interno tiene "region" o "stack" u otros nodos: */
@@ -105,6 +109,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header-background .stack-pane,
 .table-view .table-column-header .stack-pane {
     -fx-background-color: transparent;
+    
 }
 
 /* Forzar label/children */
@@ -112,7 +117,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .table-column-header .label .text,
 .table-view .column-header .label,
 .table-view .table-column-header .label {
-    -fx-text-fill: #F9FAFB;
+    -fx-text-fill: black;
 }
 
 /* Flechas/íconos de orden (triángulo/arrow) */
@@ -122,6 +127,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header .arrow .arrow-body {
     -fx-stroke: #F9FAFB;
     -fx-fill: #F9FAFB;
+    
 }
 
 /* ============================
@@ -129,7 +135,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
    ============================ */
 .table-row-cell {
     -fx-padding: 6 0;
-    -fx-background-color: transparent;
+    -fx-background-color: #748CF1;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
 }
 .table-row-cell .cell {
     -fx-text-fill: #1E3A8A;
@@ -199,20 +207,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #3B82F6;
     -fx-border-width: 1;
 }
-.btn-primary {/*btn azul*/
-    -fx-background-color: linear-gradient(to right, #3B82F6, #2b6fe0);
-    -fx-text-fill: #F9FAFB;
-    -fx-border-color: #000000; /* borde negro también en botones primarios si querés */
-    -fx-background-radius: 12;
-    -fx-border-radius: 12;
-}
-.btn-accent {/*btn naranja*/
-    -fx-background-color: linear-gradient(to right, #F97316, #d8650f);
-    -fx-text-fill: #FFFFFF;
-    -fx-border-color: #000000; /* borde negro también en botones primarios si querés */
-    -fx-background-radius: 12;
-    -fx-border-radius: 12;
-}
 .button{
     -fx-background-color: linear-gradient(to right, #3B82F6, #2b6fe0);
     -fx-text-fill: #FFFFFF;
@@ -222,7 +216,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 /* Textos */
 .label, .text {
-    -fx-text-fill: #F9FAFB;
+    -fx-text-fill: black;
 }
 .table-card .label, .table-card .text, .anchor-pane .label, .anchor-pane .text {
     -fx-text-fill: #1E3A8A;
@@ -267,4 +261,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #141313;
+}
+.btnAzul{
+    -fx-background-color: #748CF1;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #141313;
+    -fx-text-fill: black;
 }

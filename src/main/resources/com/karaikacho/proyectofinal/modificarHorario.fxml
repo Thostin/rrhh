@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="848.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.ModificarHorarioController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="848.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.ModificarHorarioController">
    <children>
       <TableView fx:id="tablaHorario" layoutX="60.0" layoutY="58.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
@@ -20,16 +20,16 @@
             <TableColumn fx:id="columnaE" minWidth="0.0" prefWidth="120.0" text="Viernes" />
         </columns>
       </TableView>
-      <CheckBox fx:id="boxEsProfesor" layoutX="623.0" layoutY="36.0" mnemonicParsing="false" onAction="#marcaDesmarca" text="Es profesor" />
-      <Button fx:id="btnAplicar" layoutX="623.0" layoutY="354.0" mnemonicParsing="false" onAction="#aplicar" text="Aplicar" />
-      <Button fx:id="btnSalir" layoutX="732.0" layoutY="354.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
-      <Label layoutX="660.0" layoutY="200.0" text="Sala:" />
+      <CheckBox fx:id="boxEsProfesor" layoutX="623.0" layoutY="36.0" mnemonicParsing="false" onAction="#marcaDesmarca" style="-fx-text-fill: yellow;" text="Es profesor" />
+      <Button fx:id="btnAplicar" layoutX="623.0" layoutY="354.0" mnemonicParsing="false" onAction="#aplicar" styleClass="btnFuncionarios" text="Aplicar" />
+      <Button fx:id="btnSalir" layoutX="732.0" layoutY="354.0" mnemonicParsing="false" onAction="#salir" styleClass="btnFuncionarios" text="Salir" />
       <TextArea fx:id="txtSala" editable="false" layoutX="693.0" layoutY="203.0" prefHeight="59.0" prefWidth="145.0" />
-      <Button fx:id="btnBuscarSala" layoutX="637.0" layoutY="224.0" mnemonicParsing="false" onAction="#buscarSala" text="..." />
+      <Button fx:id="btnBuscarSala" layoutX="637.0" layoutY="224.0" mnemonicParsing="false" onAction="#buscarSala" styleClass="btnFuncionaros" text="..." />
       <TextArea fx:id="txtCurso" editable="false" layoutX="693.0" layoutY="132.0" prefHeight="18.0" prefWidth="145.0" />
-      <Label layoutX="650.0" layoutY="130.0" text="Curso:" />
-      <Label layoutX="641.0" layoutY="83.0" text="Materia:" />
-      <TextField fx:id="txtMateria" disable="true" layoutX="693.0" layoutY="79.0" prefHeight="26.0" prefWidth="145.0" />
+      <TextField fx:id="txtMateria" disable="true" layoutX="691.0" layoutY="79.0" prefHeight="26.0" prefWidth="145.0" />
       <Button fx:id="btnBuscarCurso" disable="true" layoutX="636.0" layoutY="152.0" mnemonicParsing="false" onAction="#buscarCurso" text="..." />
+      <Label layoutX="623.0" layoutY="85.0" style="-fx-font-size: 15;" text="Materia:" />
+      <Label layoutX="640.0" layoutY="132.0" style="-fx-font-size: 15;" text="Curso:" />
+      <Label layoutX="645.0" layoutY="198.0" style="-fx-font-size: 15;" text="Sala:" />
    </children>
 </AnchorPane>

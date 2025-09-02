@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="802.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.AccesoController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="802.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.AccesoController">
    <children>
-      <AnchorPane layoutX="7.2" layoutY="2.4" prefHeight="335.0" prefWidth="784.0" styleClass="table-card" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+      <AnchorPane layoutX="7.2" layoutY="2.4" prefHeight="335.0" prefWidth="784.0" styleClass="inner_pane" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
          <children>
             <TextField fx:id="txtBuscar" layoutX="13.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="566.0" promptText="🔍" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
             <TableView fx:id="tablaFuncionarios" layoutX="14.0" layoutY="68.0" prefHeight="253.0" prefWidth="566.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="68.0">
@@ -23,13 +23,13 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="4.8" layoutY="453.0" prefHeight="85.0" prefWidth="791.0" styleClass="table-card" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="341.0">
+      <AnchorPane layoutX="4.8" layoutY="453.0" prefHeight="85.0" prefWidth="791.0" styleClass="inner_pane" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="341.0">
          <children>
-            <Button fx:id="btnNuevo" layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#nuevo" styleClass="btn-accent" text="Nuevo" />
-            <Button fx:id="btnModificar" layoutX="108.0" layoutY="29.0" mnemonicParsing="false" onAction="#modificar" styleClass="btn-accent" text="Modificar" />
-            <Button fx:id="btnEliminar" layoutX="202.0" layoutY="29.0" mnemonicParsing="false" onAction="#eliminar" styleClass="btn-accent" text="Eliminar" />
-            <Button fx:id="btnCancelar" layoutX="334.0" layoutY="29.0" mnemonicParsing="false" onAction="#cancelar" styleClass="btn-accent" text="Cancelar" />
-            <Button fx:id="btnVerHorario" layoutX="443.0" layoutY="28.0" mnemonicParsing="false" onAction="#verHorario" prefHeight="33.0" prefWidth="114.0" styleClass="btn-accent" text="Ver horario" />
+            <Button fx:id="btnNuevo" layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#nuevo" styleClass="btnFuncionarios" text="Nuevo" />
+            <Button fx:id="btnModificar" layoutX="108.0" layoutY="29.0" mnemonicParsing="false" onAction="#modificar" styleClass="btnFuncionarios" text="Modificar" />
+            <Button fx:id="btnEliminar" layoutX="202.0" layoutY="29.0" mnemonicParsing="false" onAction="#eliminar" styleClass="btnFuncionarios" text="Eliminar" />
+            <Button fx:id="btnCancelar" layoutX="334.0" layoutY="29.0" mnemonicParsing="false" onAction="#cancelar" styleClass="btnFuncionarios" text="Cancelar" />
+            <Button fx:id="btnVerHorario" layoutX="443.0" layoutY="28.0" mnemonicParsing="false" onAction="#verHorario" prefHeight="33.0" prefWidth="114.0" styleClass="btnFuncionarios" text="Ver horario" />
          </children>
       </AnchorPane>
    </children>

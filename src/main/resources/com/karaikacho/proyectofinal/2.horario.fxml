@@ -6,24 +6,24 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="652.0" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.farmacia.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="765.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.farmacia.PrimaryController">
    <children>
-      <AnchorPane layoutX="9.0" layoutY="8.0" prefHeight="298.0" prefWidth="634.0" styleClass="table-card">
+      <AnchorPane layoutX="9.0" layoutY="8.0" prefHeight="298.0" prefWidth="747.0">
          <children>
-            <TextField fx:id="txt_buscar" layoutX="13.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="588.0" promptText="🔍" />
-            <TableView fx:id="tabla_cliente" layoutX="14.0" layoutY="68.0" onMouseClicked="#mostrarFila" prefHeight="214.0" prefWidth="605.0">
+            <TextField fx:id="txt_buscar" layoutX="14.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="34.0" prefWidth="722.0" promptText="🔍" />
+            <TableView fx:id="tabla_cliente" layoutX="14.0" layoutY="64.0" onMouseClicked="#mostrarFila" prefHeight="214.0" prefWidth="722.0" styleClass="table-row-cell" stylesheets="@css/styleClass.css">
               <columns>
                 <TableColumn fx:id="columna_id" prefWidth="38.39994812011719" text="id" />
-                <TableColumn fx:id="columna_nombre" prefWidth="138.39996719360352" text="Nombre" />
-                  <TableColumn fx:id="columna_apellido" prefWidth="138.40000915527344" text="Apellido" />
-                  <TableColumn minWidth="0.0" prefWidth="287.20000610351565" text="Horario" />
+                <TableColumn fx:id="columna_nombre" prefWidth="181.60002899169922" text="Nombre" />
+                  <TableColumn fx:id="columna_apellido" prefWidth="184.79998779296875" text="Apellido" />
+                  <TableColumn minWidth="0.0" prefWidth="316.79999389648435" text="Horario" />
               </columns>
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="9.0" layoutY="311.0" prefHeight="98.0" prefWidth="633.0" styleClass="table-card">
+      <AnchorPane layoutX="9.0" layoutY="306.0" prefHeight="70.0" prefWidth="747.0" styleClass="inner_pane">
          <children>
-            <Button fx:id="btn_detalle" disable="true" layoutX="27.0" layoutY="28.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="26.0" prefWidth="123.0" styleClass="btn-accent" text="Ver detalle" />
+            <Button fx:id="btn_detalle" disable="true" layoutX="26.0" layoutY="17.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="26.0" prefWidth="123.0" styleClass="btnFuncionarios" text="Ver detalle" />
          </children>
       </AnchorPane>
    </children>
