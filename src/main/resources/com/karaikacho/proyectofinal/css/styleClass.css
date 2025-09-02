@@ -231,8 +231,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #353A56;
     /*-fx-border-color: #2207bb;*/
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
     -fx-border-style: solid;
 }
 .inner_pane{
