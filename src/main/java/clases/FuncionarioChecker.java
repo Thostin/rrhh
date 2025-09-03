@@ -13,8 +13,19 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -280,5 +291,35 @@ ORDER BY n1.hora;
         }
 
         System.out.println("Total de tiempo compensado: " + (sumaHoraTotal - sumaAporteTotal - sumaTotalDoceUna + sumaTotalHorarioDoceUna));
+
+        /* Prueba del Jasper Report */
+        ArrayList<RegistroFuncionario> registroReporte = new ArrayList();
+        registroReporte.add(new RegistroFuncionario(LocalDate.now(), "07:00", "12:00", "06:51", "12:08", "kahsdsj", "wefw4", "eifh"));
+
+        // 1. Load compiled report
+        JasperReport jasperReport;
+
+        // 2. Data
+        // List<Person> people = List.of(new Person("Alice", 30), new Person("Bob", 40));
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(registroReporte);
+
+        // 3. Parameters (optional)
+        Map<String, Object> params = new HashMap<>();
+        params.put("ds", dataSource);
+
+        // 4. Fill
+        JasperPrint jasperPrint;
+        try {
+            jasperReport = (JasperReport) JRLoader.loadObjectFromFile("/home/thotstin/Code/JAVA/RRHH/ProyectoFinal/src/main/java/com/karaikacho/proyectofinal/reportes/reporteAsistencias.jasper");
+            jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
+        } catch (JRException ex) {
+            System.getLogger(FuncionarioChecker.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            return;
+        }
+
+        // 5. Export to PDF
+        // JasperExportManager.exportReportToPdfFile(jasperPrint, "output.pdf");
+        // Or show it
+        JasperViewer.viewReport(jasperPrint, false);
     }
 }

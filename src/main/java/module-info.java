@@ -5,10 +5,11 @@ module com.karaikacho.proyectofinal {
     requires java.sql;
     requires java.base;
     requires com.zaxxer.hikari;
+    requires jasperreports;
     
     opens com.karaikacho.proyectofinal to javafx.fxml;
     opens clases to javafx.fxml, javafx.base;
-    
+
     exports com.karaikacho.proyectofinal;
     exports clases;
 }
