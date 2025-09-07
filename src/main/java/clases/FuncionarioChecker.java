@@ -33,7 +33,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class FuncionarioChecker {
 
-    private static record Par(int inicio, int fin) {
+    public static record Par(int inicio, int fin) {
 
     }
 
@@ -68,8 +68,8 @@ public class FuncionarioChecker {
 
     }
 
-    private static ArrayList<Par> getHorario(int idFuncionario) {
-        ArrayList<Par> horasNoCompensadas = new ArrayList();
+    public static ArrayList<Par> getHorario(int idFuncionario) {
+        ArrayList<Par> horas = new ArrayList();
         String sql = "SELECT horaInicio, horaFin FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " ORDER BY horaInicio ASC";
 
         try (Connection con = ConnectionPool.getConnection()) {
@@ -79,13 +79,13 @@ public class FuncionarioChecker {
             Par par;
             while (resultado.next()) {
                 par = new Par(resultado.getInt("horaInicio"), resultado.getInt("horaFin"));
-                horasNoCompensadas.add(par);
+                horas.add(par);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioChecker.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return horasNoCompensadas;
+        return horas;
     }
 
     private static ArrayList<Par> getHorasNoFijas(int idFuncionario) {
@@ -108,16 +108,16 @@ public class FuncionarioChecker {
         return horasNoCompensadas;
 
     }
-
-    private static int semiMu(int x) {
+    
+    public static int semiMu(int x) {
         return x < 0 ? 0 : x;
     }
 
-    private static record ParDateTime(LocalDateTime inicio, LocalDateTime fin) {
+    public static record ParDateTime(LocalDateTime inicio, LocalDateTime fin) {
 
     }
 
-    private static ArrayList<ParDateTime> getRegistros(int idFuncionario, LocalDate inicio, LocalDate fin) {
+    public static ArrayList<ParDateTime> getRegistros(int idFuncionario, LocalDate inicio, LocalDate fin) {
         ArrayList<ParDateTime> registros = new ArrayList();
         //String sql = "SELECT hora FROM REGISTROS WHERE idFuncionario=" + idFuncionario + " ORDER BY hora ASC;" + idFuncionario;
 
@@ -155,7 +155,7 @@ ORDER BY n1.hora;
                 registros.add(new ParDateTime(resultado.getObject("entrada", LocalDateTime.class),
                         resultado.getObject("salida", LocalDateTime.class)));
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioChecker.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -292,6 +292,8 @@ ORDER BY n1.hora;
 
         System.out.println("Total de tiempo compensado: " + (sumaHoraTotal - sumaAporteTotal - sumaTotalDoceUna + sumaTotalHorarioDoceUna));
 
+        /* Generar todos los registros */
+        
         /* Prueba del Jasper Report */
         ArrayList<RegistroFuncionario> registroReporte = new ArrayList();
         registroReporte.add(new RegistroFuncionario(LocalDate.now(), "07:00", "12:00", "06:51", "12:08", "kahsdsj", "wefw4", "eifh"));

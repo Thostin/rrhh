@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="916.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.ChequearFuncionarioController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="916.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.ChequearFuncionarioController">
    <children>
       <Pane layoutX="11.0" layoutY="8.0" prefHeight="281.0" prefWidth="315.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
          <children>
@@ -49,6 +49,8 @@
                   </JFXTextArea>
                </children>
             </Pane>
+            <Label fx:id="errorLabel" layoutX="75.0" layoutY="281.0" styleClass="error-label" text="Label" visible="false" />
+            <Button fx:id="btnVerRegistros" layoutX="557.0" layoutY="295.0" mnemonicParsing="false" onAction="#verRegistros" text="Ver registros" />
          </children>
       </Pane>
    </children>

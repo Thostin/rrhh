@@ -7,10 +7,14 @@ package com.karaikacho.proyectofinal;
 import InfoTrespassing.ObjetosEstaticos;
 import clases.DbOcupacion;
 import clases.DbSala;
+import clases.FuncionarioChecker;
+import clases.FuncionarioChecker.Par;
+import static clases.FuncionarioChecker.semiMu;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
@@ -79,8 +83,8 @@ public class CargarHorarioController extends OpensFXML implements Initializable 
             btnBuscarFuncionario.setDisable(true);
             txtFuncionario.setText(ObjetosEstaticos.funcionarioCargarHorario.getNombres());
             txtSala.setText(ObjetosEstaticos.detalleOcupacionModificar.getSala());
-            cmbDia.getSelectionModel().select(ObjetosEstaticos.ocupacionModificar.getHoraInicio()/1440);
-            
+            cmbDia.getSelectionModel().select(ObjetosEstaticos.ocupacionModificar.getHoraInicio() / 1440);
+
             if (ObjetosEstaticos.detalleOcupacionModificar.getEsCompensado().equals("Si")) {
                 cmbEsCompensatorio.getSelectionModel().select("Si");
             }
@@ -122,7 +126,7 @@ public class CargarHorarioController extends OpensFXML implements Initializable 
 
     @FXML
     private void buscarSala(ActionEvent event) {
-        abrirFXML("buscarSalas.fxml", "Seleccionar Funcionario",(Stage) ((Node) event.getSource()).getScene().getWindow());
+        abrirFXML("buscarSalas.fxml", "Seleccionar Funcionario", (Stage) ((Node) event.getSource()).getScene().getWindow());
         txtSala.setText(ObjetosEstaticos.salaSeleccion.getNombre());
     }
 
@@ -166,13 +170,33 @@ public class CargarHorarioController extends OpensFXML implements Initializable 
         alerta.setTitle("El sistema comunica: ");
         alerta.setHeaderText("");
         DbOcupacion ocupacion;
+
+        int detalleHoraInicio = horaInicio.getHour() * 60 + horaInicio.getMinute() + 1440 * dia;
+        int detalleHoraFin = horaFin.getHour() * 60 + horaFin.getMinute() + 1440 * dia;
+
+        /* Hallar si hay colisiones con otro horario */
+ /* No es necesario chequear las salas porque es posible 
+        que hayan salas en las que hayan varios funcionarios al
+        mismo tiempo y otras que no, y eso añade complejidad 
+        innecesaria (no es decisivo en ningun calculo */
+        ArrayList<Par> horario = FuncionarioChecker.getHorario(ObjetosEstaticos.funcionarioSeleccion.getId());
+        int aux;
+        for (Par intervalo : horario) {
+            aux = semiMu(detalleHoraInicio - intervalo.inicio())
+                    + semiMu(intervalo.fin() - detalleHoraFin);
+            if (0 < semiMu(intervalo.fin() - intervalo.inicio() - aux)) {
+                System.out.println("Error: Hay una colision de intervalos de horario");
+                return;
+            }
+        }
+
         boolean resultadoErr;
         if (ObjetosEstaticos.seModificaHorario == true) {
             ocupacion
                     = new DbOcupacion(
                             ObjetosEstaticos.detalleOcupacionModificar.getOcupacion().getId(),
-                            horaInicio.getHour() * 60 + horaInicio.getMinute() + 1440 * dia,
-                            horaFin.getHour() * 60 + horaFin.getMinute() + 1440 * dia,
+                            detalleHoraInicio,
+                            detalleHoraFin,
                             ObjetosEstaticos.funcionarioSeleccion.getId(),
                             ObjetosEstaticos.salaSeleccion.getId(),
                             esComp);
@@ -184,8 +208,8 @@ public class CargarHorarioController extends OpensFXML implements Initializable 
         } else {
             ocupacion
                     = new DbOcupacion(
-                            horaInicio.getHour() * 60 + horaInicio.getMinute() + 1440 * dia,
-                            horaFin.getHour() * 60 + horaInicio.getMinute() + 1440 * dia,
+                            detalleHoraInicio,
+                            detalleHoraFin,
                             ObjetosEstaticos.funcionarioSeleccion.getId(),
                             ObjetosEstaticos.salaSeleccion.getId(),
                             esComp
