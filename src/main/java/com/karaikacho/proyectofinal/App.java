@@ -1,6 +1,8 @@
 package com.karaikacho.proyectofinal;
 
 import clases.FuncionarioChecker;
+import java.awt.Desktop;
+import java.io.File;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,9 +23,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
         scene = new Scene(loadFXML("miniLogin"));
         stage.setScene(scene);
         stage.show();
+/*
+        if (Desktop.isDesktopSupported()) {
+            File aux = new File("/home/thotstin/Code/JAVA/RRHH/ProyectoFinal/Documentation/out/documentacion.pdf");
+            Desktop.getDesktop().open(aux);
+        } else {
+            System.out.println("Desktop API not supported");
+        }*/
 
         /*
         if (ObjetosEstaticos.confirmado == true) {

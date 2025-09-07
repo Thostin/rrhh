@@ -4,6 +4,7 @@
  */
 package com.karaikacho.proyectofinal;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,13 +16,16 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.awt.Desktop;
+import java.io.IOException;
+
 /**
  * FXML Controller class
  *
  * @author thotstin
  */
 public class GeneralController extends OpensFXML implements Initializable {
-
 
     @FXML
     private AnchorPane side_ankerpane;
@@ -41,14 +45,17 @@ public class GeneralController extends OpensFXML implements Initializable {
     private Pane inner_pane;
     @FXML
     private Pane most_inner_pane;
+    @FXML
+    private Button btnAyuda;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void funcionarios(ActionEvent event) {
         btnFuncionarios.setDisable(true);
@@ -91,4 +98,12 @@ public class GeneralController extends OpensFXML implements Initializable {
         btnChequear.setDisable(false);
     }
 
+    @FXML
+    private void ayuda(ActionEvent event) {
+        try {
+            new ProcessBuilder("xdg-open", "/home/thotstin/Code/JAVA/RRHH/ProyectoFinal/Documentation/out/documentacion.pdf").start();
+        } catch (IOException ex) {
+            System.getLogger(GeneralController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }
 }
