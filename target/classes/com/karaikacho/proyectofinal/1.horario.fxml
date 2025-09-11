@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.farmacia.PrimaryController">
+   <children>
+      <AnchorPane layoutX="8.0" layoutY="7.0" prefHeight="338.0" prefWidth="838.0" style="-fx-background-color: gray;">
+         <children>
+            <TextField fx:id="txt_buscar" layoutX="14.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="812.0" promptText="🔍" />
+            <TableView fx:id="tabla_cliente" layoutX="14.0" layoutY="54.0" onMouseClicked="#mostrarFila" prefHeight="276.0" prefWidth="812.0">
+              <columns>
+                <TableColumn fx:id="columna_id" prefWidth="150.40002059936523" text="Lunes" />
+                <TableColumn fx:id="columna_nombre" prefWidth="151.99998474121094" text="Martes" />
+                  <TableColumn fx:id="columna_apellido" prefWidth="174.40008544921875" text="Miercoles" />
+                  <TableColumn prefWidth="170.4000244140625" text="Jueves" />
+                  <TableColumn prefWidth="167.20001220703125" text="Viernes" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

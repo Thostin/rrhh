@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="916.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.ChequearFuncionarioController">
+   <children>
+      <Pane layoutX="11.0" layoutY="8.0" prefHeight="281.0" prefWidth="315.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+         <children>
+            <Button fx:id="btnChequearFuncionario" layoutX="617.0" layoutY="130.0" mnemonicParsing="false" onAction="#buscarFuncionario" text="..." />
+            <TextField fx:id="txtFuncionario" disable="true" layoutX="300.0" layoutY="131.0" prefHeight="31.0" prefWidth="307.0" />
+            <Label layoutX="200.0" layoutY="137.0" style="-fx-font-size: 15;" text="Funcionario:" />
+            <Button fx:id="btnRevisar" layoutX="407.0" layoutY="290.0" mnemonicParsing="false" onAction="#chequear" text="Revisar" />
+            <DatePicker fx:id="fechaInicio" layoutX="174.0" layoutY="210.0" />
+            <DatePicker fx:id="fechaFin" layoutX="559.0" layoutY="210.0" />
+            <Label layoutX="102.0" layoutY="218.0" style="-fx-font-size: 15;" text="Desde:" />
+            <Label alignment="TOP_CENTER" layoutX="469.0" layoutY="218.0" prefHeight="15.0" prefWidth="65.0" style="-fx-font-size: 15;" text="Hasta:">
+               <font>
+                  <Font size="32.0" />
+               </font></Label>
+            <Pane fx:id="inner_pane" layoutX="31.0" layoutY="14.0" prefHeight="78.0" prefWidth="832.0" styleClass="inner_pane" stylesheets="@css/sample_style.css">
+               <children>
+                  <ImageView fitHeight="78.0" fitWidth="93.0" layoutX="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/logo_waifu2x_art_noise1-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Pane fx:id="most_inner_pane" layoutX="757.0" layoutY="6.0" prefHeight="66.0" prefWidth="54.0" styleClass="most_inner_pane" stylesheets="@css/sample_style.css">
+                     <children>
+                        <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="7.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/3dots-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <JFXTextArea editable="false" layoutX="104.0" layoutY="6.0" prefHeight="99.0" prefWidth="653.0" style="-jfx-unfocus-color: none;" text="Chequea asistencia de funcionario">
+                     <font>
+                        <Font name="Britannic Bold" size="40.0" />
+                     </font>
+                  </JFXTextArea>
+               </children>
+            </Pane>
+            <Label fx:id="errorLabel" layoutX="75.0" layoutY="281.0" styleClass="error-label" text="Label" visible="false" />
+            <Button fx:id="btnVerRegistros" layoutX="557.0" layoutY="295.0" mnemonicParsing="false" onAction="#verRegistros" text="Ver registros" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="600.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.CursosController">
+   <children>
+      <AnchorPane layoutX="183.0" layoutY="114.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="tablaCursos" layoutX="15.2" layoutY="11.2" prefHeight="327.0" prefWidth="570.0" styleClass="table-row-cell" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="11.0">
+              <columns>
+                <TableColumn fx:id="columnaId" prefWidth="78.39999502897263" text="Id" />
+                <TableColumn fx:id="columnaNombre" prefWidth="232.79998016357422" resizable="false" text="Nombre" />
+                  <TableColumn fx:id="columnaEspecialidad" prefWidth="255.99996948242188" text="Especialidades" />
+              </columns>
+            </TableView>
+            <AnchorPane layoutX="13.0" layoutY="347.0" prefHeight="62.0" prefWidth="570.0" styleClass="inner_pane">
+               <children>
+                  <Button fx:id="btnNuevo" layoutX="30.0" layoutY="16.0" mnemonicParsing="false" onAction="#nuevo" styleClass="btnFuncionarios" text="Nuevo" />
+                  <Button fx:id="btnEliminar" layoutX="120.0" layoutY="16.0" mnemonicParsing="false" onAction="#eliminar" styleClass="btnFuncionarios" text="Eliminar" />
+                  <Button fx:id="btnModificar" layoutX="218.0" layoutY="16.0" mnemonicParsing="false" onAction="#modificar" styleClass="btnFuncionarios" text="Modificar" />
+                  <Button fx:id="btnSalir" layoutX="325.0" layoutY="16.0" mnemonicParsing="false" onAction="#salir" styleClass="btnFuncionarios" text="Salir" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
