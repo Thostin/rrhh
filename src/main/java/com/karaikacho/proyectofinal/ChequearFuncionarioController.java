@@ -10,7 +10,9 @@ import clases.FuncionarioChecker;
 import clases.FuncionarioChecker.Par;
 import clases.FuncionarioChecker.ParDateTime;
 import static clases.FuncionarioChecker.getRegistros;
+import static clases.FuncionarioChecker.toMinute;
 import clases.RegistroFuncionario;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -134,6 +136,17 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         return res;
     }
 
+    private boolean seSolapa(Par horario, ParDateTime marca) {
+        int inicioMarca = toMinute(marca.inicio());
+        int finMarca = toMinute(marca.fin());
+
+        if (inicioMarca < horario.fin() && finMarca > horario.inicio()) {
+            return true;
+        }
+
+        return false;
+    }
+
     @FXML
     private void verRegistros(ActionEvent event) {
         if (null == funcionarioSeleccionado) {
@@ -152,12 +165,12 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         }
 
         ArrayList<ParDateTime> registros = FuncionarioChecker.getRegistros(funcionarioSeleccionado.getId(), fechaInicio.getValue(), fechaFin.getValue());
-        ArrayList<RegistroFuncionario> registroReporte = new ArrayList();
+        ArrayList<RegistroFuncionario> registroReporte = new ArrayList<>();
         ArrayList<Par> horario = FuncionarioChecker.getHorario(funcionarioSeleccionado.getId());
 
         LocalDateTime auxInicio = null;
         LocalDateTime auxFin = null;
-        LocalDate iterar = fechaInicio.getValue();
+        // LocalDate iterar = fechaInicio.getValue();
 
         /* Generar todos las filas que corresponden a
          donde debe existir un registro, y despues cargarle el registro 
@@ -169,62 +182,110 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         ParDateTime primeraMarca = null;
         ParDateTime ultimaMarca = null;
         int diaAux;
+        int auxX;
 
-        while (!iterar.isAfter(fechaFin.getValue())) {
-            diaAux = iterar.getDayOfWeek().getValue();
-            /* Se encuentra una fecha que corresponde a una fila 
-            (porque existe un horario en ese dia) */
-            for (Par intervaloHorario : horario) {
-                if (primerHorario == null) {
-                    if (diaAux == 1 + intervaloHorario.inicio() / 1440) {
-                        primerHorario = ultimoHorario = intervaloHorario;
-                    }
-                } else {
-                    if (ultimoHorario.inicio() / 1440 == intervaloHorario.inicio() / 1440) {
-                        ultimoHorario = intervaloHorario;
-                    } else {
-                        /* Si se llega aca es que horaEntrada/SalidaAux tienen
-                        sus valores correspondientes (existe horario en esa fecha) */
- /* Ahora hay que conseguir las marcas de entrada y salida,
-                           si es que existen */
+        String marcaEntrada = "";
+        String marcaSalida = "";
+        String strEsLlegadaTardia = "";
+        String strEsSalidaAnticipada = "";
 
-                        for (ParDateTime marca : registros) {
-                            /* Buscar marca entrada de la primera marca y 
-                            marca salida de la ultima marca */
- /* Misma estructura */
-                            if (null == primeraMarca) {
-                                if (iterar.equals(marca.inicio().toLocalDate())) {
-                                    primeraMarca = ultimaMarca = marca;
-                                }
-                            } else {
-                                if (ultimaMarca.inicio().toLocalDate().equals(marca.inicio().toLocalDate())) {
-                                    ultimaMarca = marca;
-                                } else {
-                                    /* Aca por fin se tiene lo que se quiere: el
-                                    registro final, si es que existe, de los horarios 
-                                    de entrada, salida y marca de entrada y salida */
-                                    break;
-                                }
-                            }
-                        }
+        for (LocalDate iterar = fechaInicio.getValue(); !iterar.isAfter(fechaFin.getValue()); iterar = iterar.plusDays(1)) {
+            // INTENTO DE DESCRIPCION DE LOGICA
+            /*
+            Revisa fecha por fecha, si existe un horario que corresponde a esa fecha, entonces 
+            automaticamente se genera una fila en el reporte. Si existe una marca de entrada o salida
+            con esa marca de ENTRADA, pero la salida aun sin definir. Si la salida es durante un horario, 
+            entonces se anade atutomaticamente esa fila y se cuenta como salida anticipada. 
+            
+            Si no, entonces se busca el siguiente horario de entrada y asi sucesivamente hasta que 
+            sea el ultimo, y ahi se pasa hasta la siguiente fecha.
+             */
 
-                        String marcaEntrada = "";
-                        String marcaSalida = "";
-                        if (null != primeraMarca && null != ultimaMarca) {
-                            /* En teoria uno es null si y solo si el otro es null */
-                            marcaEntrada = "" + minutoAString(60 * primeraMarca.inicio().getHour() + primeraMarca.inicio().getMinute());
-                            marcaSalida = "" + minutoAString(60 * ultimaMarca.fin().getHour() + ultimaMarca.fin().getMinute());
-                        }
+ /*
+            Algoritmo: Para cada fecha, ver horario por horario (no es necesario optimizar, hay muy pocos horarios de un 
+            solo funcionario, a lo sumo 15) y si se encuentra uno en esa fecha, entonces hay que conseguir eso y 
+            volver a iterar desde ahi, y aplicar lo que estar descrito ahi: 
+            basicamente conseguir el conjunto de horarios que pertenecen a esa fecha. 
+            Eso voy a hacer con una busqueda lineal en los horarios indice por indice y despues iterar en ese intervalo
+            Optimizar es opcional.
+             */
+            int primer = -1;
+            int final_ = -1;
+            for (int i = 0; i < horario.size(); ++i) {
+                if (primer == -1 && 1 + horario.get(i).inicio() / 1440 == iterar.getDayOfWeek().getValue()) {
+                    primer = i;
+                } else if (-1 != primer && 1 + horario.get(i).inicio() / 1440 != iterar.getDayOfWeek().getValue()) {
+                    final_ = i - 1;
+                    break;
+                }
+            }
+            if (-1 == primer) {
+                break;
+            }
 
-                        registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), marcaEntrada, marcaSalida, "TODO", "TODO", "TODO"));
-
-                        primerHorario = ultimoHorario = null;
-                        primeraMarca = ultimaMarca = null;
-                    }
+            //Encontrar las marcas de ese dia
+            // TIENE QUE MOSTRAR EL HORARIO INCLUSO SI NO VINO
+            int primerMarca = -1;
+            int finalMarca = -1;
+            for (int i = 0; i < registros.size(); ++i) {
+                if (primerMarca == -1 && 1 + toMinute(registros.get(i).inicio()) / 1440 == iterar.getDayOfWeek().getValue()) {
+                    primerMarca = finalMarca = i;
+                } else if (-1 != primerMarca && 1 + toMinute(registros.get(i).inicio()) / 1440 != iterar.getDayOfWeek().getValue()) {
+                    finalMarca = i - 1; // Clave el -1
+                    break;
                 }
             }
 
-            iterar = iterar.plusDays(1);
+//registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), marcaEntrada, marcaSalida, "TODO", "TODO", "TODO"));
+            // Iterar en los horarios de ese dia
+            // NOTA: La idea es mostrar TODAS las marcas
+            // Mostrar los intervalos de horario solos 
+            // solamente si no hay horario que cubra parte de ellos.
+            // Ordenar el resultado de alguna manera
+            for (int j = primerMarca; j <= finalMarca; ++j) {
+
+                // Ver si es Llegada tardia o Salida anticipada
+                for (int i = primer; i <= final_; ++i) {
+                    if (horario.get(i).inicio() < toMinute(registros.get(j).inicio()) && horario.get(i).fin() > toMinute(registros.get(j).inicio())) {
+                        strEsLlegadaTardia = "Y";
+                    }
+                    if (horario.get(i).inicio() < toMinute(registros.get(j).fin()) && horario.get(i).fin() > toMinute(registros.get(j).fin())) {
+                        strEsSalidaAnticipada = "Y";
+                    }
+                }
+
+                // Consultar todos los horarios que se solapan con estos
+                // y mostrar el horario de entrada del primero y
+                // el horario de salida del ultimo
+                for (int i = primer; i <= final_; ++i) {
+                    if (seSolapa(horario.get(i), registros.get(j))) {
+                        if (primerHorario == null) {
+                            primerHorario = ultimoHorario = horario.get(i);
+                        } else {
+                            ultimoHorario = horario.get(i);
+                        }
+                    }
+                }
+
+                if (null != primerHorario) {
+                    registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                } else {
+                    registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                }
+            }
+
+            boolean haySolapo = false;
+            for (int i = primer; i <= final_; ++i) {
+                for (int j = primerMarca; j <= finalMarca; ++j) {
+                    if (seSolapa(horario.get(i), registros.get(j))) {
+                        haySolapo = true;
+                    }
+                }
+                if (!haySolapo) {
+                    registroReporte.add(new RegistroFuncionario(iterar, minutoAString(horario.get(i).inicio()), minutoAString(horario.get(i).fin()), "", "", "", "", "Y"));
+                }
+                haySolapo = false;
+            }
         }
 
         // 1. Load compiled report
@@ -236,10 +297,13 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
 
         // 3. Parameters (optional)
         Map<String, Object> params = new HashMap<>();
-        params.put("ds", dataSource);
+
+        params.put(
+                "ds", dataSource);
 
         // 4. Fill
         JasperPrint jasperPrint;
+
         try {
             jasperReport = (JasperReport) JRLoader.loadObjectFromFile("/home/thotstin/Code/JAVA/RRHH/ProyectoFinal/src/main/java/com/karaikacho/proyectofinal/reportes/reporteAsistencias.jasper");
             jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
@@ -251,7 +315,8 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         // 5. Export to PDF
         // JasperExportManager.exportReportToPdfFile(jasperPrint, "output.pdf");
         // Or show it
-        JasperViewer.viewReport(jasperPrint, false);
+        JasperViewer.viewReport(jasperPrint,
+                false);
 
     }
 

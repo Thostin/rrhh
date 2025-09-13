@@ -40,7 +40,7 @@ public class FuncionarioChecker {
     // Reduce a los minutos que pasaron (redondeado hacia abajo)
     // de los minutos que pasaron desde el inicio de la 
     // semana de esa fecha
-    private static int toMinute(LocalDateTime dateTime) {
+    public static int toMinute(LocalDateTime dateTime) {
         int dia = dateTime.getDayOfWeek().getValue();
 
         return (dia - 1) * 24 * 60 + dateTime.getHour() * 60 + dateTime.getMinute();
