@@ -136,6 +136,10 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         return res;
     }
 
+    private String minutoToPalabra(int minuto) {
+        return minuto / 60 + " horas y " + minuto % 60 + " minutos";
+    }
+
     private boolean seSolapa(Par horario, ParDateTime marca) {
         int inicioMarca = toMinute(marca.inicio());
         int finMarca = toMinute(marca.fin());
@@ -310,7 +314,12 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
 
         params.put(
                 "ds", dataSource);
+        params.put("nombre", funcionarioSeleccionado.getNombres());
 
+        Par res = FuncionarioChecker.checkHorarioFuncionario(funcionarioSeleccionado, fechaInicio.getValue(), fechaFin.getValue());
+
+        params.put("horaFaltante", minutoToPalabra(res.inicio()));
+        params.put("horaCompensada", minutoToPalabra(res.fin()));
         // 4. Fill
         JasperPrint jasperPrint;
 

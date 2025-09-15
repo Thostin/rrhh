@@ -190,7 +190,7 @@ ORDER BY n1.hora;
     // El sistema es bastante flexible, no se es necesario comparar fecha por fecha, pero
     // si hubo o no solapamiento y cuanto suman esos solapamientos
     // Despues hay que saber cuantas veces hay esa ocupacion en ese intervalo de fechas simplemente
-    public static void checkHorarioFuncionario(DbFuncionario funcionario, LocalDate inicio, LocalDate fin) {
+    public static Par checkHorarioFuncionario(DbFuncionario funcionario, LocalDate inicio, LocalDate fin) {
         int idFuncionario = funcionario.getId();
 
         ArrayList<Par> paresHorarioFijos = getHorasFijas(idFuncionario);
@@ -277,11 +277,8 @@ ORDER BY n1.hora;
             sumaTotalHorarioDoceUna += semiMu(horaFinHorario - horaInicioHorario - falta) * diasEnMedio(1 + intervaloHorario.inicio / 1440, inicio, fin);
         }
 
-        int horas = sumaFaltas / 60;
+        
 
-        System.out.println(
-                "La cantidad de minutos que se fallaron en el intervalo"
-                + "de fechas: " + sumaFaltas + " (en cristiano: " + horas + " horas y " + sumaFaltas % 60 + " minutos)");
 
         // En minutos
         int compensado = 0;
@@ -290,11 +287,19 @@ ORDER BY n1.hora;
             sumaHoraTotal += intervalo.fin - intervalo.inicio;
         }
 
+        int horas = sumaFaltas / 60;
+        System.out.println(
+                "La cantidad de minutos que se fallaron en el intervalo"
+                + "de fechas: " + sumaFaltas + " (en cristiano: " + horas + " horas y " + sumaFaltas % 60 + " minutos)");
+
         System.out.println("Total de tiempo compensado: " + (sumaHoraTotal - sumaAporteTotal - sumaTotalDoceUna + sumaTotalHorarioDoceUna));
 
+        return new Par(sumaFaltas, sumaHoraTotal - sumaAporteTotal - sumaTotalDoceUna + sumaTotalHorarioDoceUna);
+        
         /* Generar todos los registros */
         
         /* Prueba del Jasper Report */
+        /*
         ArrayList<RegistroFuncionario> registroReporte = new ArrayList();
         registroReporte.add(new RegistroFuncionario(LocalDate.now(), "07:00", "12:00", "06:51", "12:08", "kahsdsj", "wefw4", "eifh"));
 
@@ -323,5 +328,6 @@ ORDER BY n1.hora;
         // JasperExportManager.exportReportToPdfFile(jasperPrint, "output.pdf");
         // Or show it
         JasperViewer.viewReport(jasperPrint, false);
+        */
     }
 }
