@@ -219,8 +219,9 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
                     break;
                 }
             }
+
             if (-1 == primer) {
-                break;
+                continue;
             }
 
             //Encontrar las marcas de ese dia
@@ -231,7 +232,7 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
                 if (primerMarca == -1 && 1 + toMinute(registros.get(i).inicio()) / 1440 == iterar.getDayOfWeek().getValue()) {
                     primerMarca = finalMarca = i;
                 } else if (-1 != primerMarca && 1 + toMinute(registros.get(i).inicio()) / 1440 != iterar.getDayOfWeek().getValue()) {
-                    finalMarca = i - 1; // Clave el -1
+                    finalMarca = i - 1;
                     break;
                 }
             }
@@ -242,49 +243,58 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
             // Mostrar los intervalos de horario solos 
             // solamente si no hay horario que cubra parte de ellos.
             // Ordenar el resultado de alguna manera
-            for (int j = primerMarca; j <= finalMarca; ++j) {
+            if (-1 != primerMarca) {
+                for (int j = primerMarca; j <= finalMarca; ++j) {
 
-                // Ver si es Llegada tardia o Salida anticipada
-                for (int i = primer; i <= final_; ++i) {
-                    if (horario.get(i).inicio() < toMinute(registros.get(j).inicio()) && horario.get(i).fin() > toMinute(registros.get(j).inicio())) {
-                        strEsLlegadaTardia = "Y";
-                    }
-                    if (horario.get(i).inicio() < toMinute(registros.get(j).fin()) && horario.get(i).fin() > toMinute(registros.get(j).fin())) {
-                        strEsSalidaAnticipada = "Y";
-                    }
-                }
-
-                // Consultar todos los horarios que se solapan con estos
-                // y mostrar el horario de entrada del primero y
-                // el horario de salida del ultimo
-                for (int i = primer; i <= final_; ++i) {
-                    if (seSolapa(horario.get(i), registros.get(j))) {
-                        if (primerHorario == null) {
-                            primerHorario = ultimoHorario = horario.get(i);
-                        } else {
-                            ultimoHorario = horario.get(i);
+                    // Ver si es Llegada tardia o Salida anticipada
+                    for (int i = primer; i <= final_; ++i) {
+                        if (horario.get(i).inicio() < toMinute(registros.get(j).inicio()) && horario.get(i).fin() > toMinute(registros.get(j).inicio())) {
+                            strEsLlegadaTardia = "Y";
+                        }
+                        if (horario.get(i).inicio() < toMinute(registros.get(j).fin()) && horario.get(i).fin() > toMinute(registros.get(j).fin())) {
+                            strEsSalidaAnticipada = "Y";
                         }
                     }
-                }
 
-                if (null != primerHorario) {
-                    registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
-                } else {
-                    registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                    // Consultar todos los horarios que se solapan con estos
+                    // y mostrar el horario de entrada del primero y
+                    // el horario de salida del ultimo
+                    for (int i = primer; i <= final_; ++i) {
+                        if (seSolapa(horario.get(i), registros.get(j))) {
+                            if (primerHorario == null) {
+                                primerHorario = ultimoHorario = horario.get(i);
+                            } else {
+                                ultimoHorario = horario.get(i);
+                            }
+                        }
+                    }
+
+                    if (null != primerHorario) {
+                        registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                    } else {
+                        registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                    }
                 }
             }
 
             boolean haySolapo = false;
-            for (int i = primer; i <= final_; ++i) {
-                for (int j = primerMarca; j <= finalMarca; ++j) {
-                    if (seSolapa(horario.get(i), registros.get(j))) {
-                        haySolapo = true;
+            if (-1 != primerMarca) {
+                for (int i = primer; i <= final_; ++i) {
+                    for (int j = primerMarca; j <= finalMarca; ++j) {
+                        if (seSolapa(horario.get(i), registros.get(j))) {
+                            haySolapo = true;
+                        }
                     }
+                    if (!haySolapo) {
+                        registroReporte.add(new RegistroFuncionario(iterar, minutoAString(horario.get(i).inicio()), minutoAString(horario.get(i).fin()), "", "", "", "", "Y"));
+                    }
+                    haySolapo = false;
                 }
-                if (!haySolapo) {
+            } else {
+                for (int i = primer; i <= final_; ++i) {
                     registroReporte.add(new RegistroFuncionario(iterar, minutoAString(horario.get(i).inicio()), minutoAString(horario.get(i).fin()), "", "", "", "", "Y"));
+                    haySolapo = false;
                 }
-                haySolapo = false;
             }
         }
 
