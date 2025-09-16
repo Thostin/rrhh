@@ -14,6 +14,7 @@ import static clases.FuncionarioChecker.toMinute;
 import clases.RegistroFuncionario;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -303,8 +304,6 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         }
 
         // 1. Load compiled report
-        JasperReport jasperReport;
-
         // 2. Data
         // List<Person> people = List.of(new Person("Alice", 30), new Person("Bob", 40));
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(registroReporte);
@@ -321,10 +320,17 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         params.put("horaFaltante", minutoToPalabra(res.inicio()));
         params.put("horaCompensada", minutoToPalabra(res.fin()));
         // 4. Fill
-        JasperPrint jasperPrint;
 
+        JasperPrint jasperPrint;
         try {
-            jasperReport = (JasperReport) JRLoader.loadObjectFromFile("/home/thotstin/Code/JAVA/RRHH/ProyectoFinal/src/main/java/com/karaikacho/proyectofinal/reportes/reporteAsistencias.jasper");
+            //jasperReport = (JasperReport) JRLoader.loadObjectFromFile("/home/thotstin/Code/JAVA/RRHH/ProyectoFinal/src/main/java/com/karaikacho/proyectofinal/reportes/reporteAsistencias.jasper");
+
+            //InputStream reportStream = getClass().getResourceAsStream("/reports/myreport.jasper");
+            //JasperPrint jasperPrint = JasperFillManager.fillReport(reportStream, parameters, connection);
+
+            InputStream jasperReport;
+            jasperReport = getClass().getResourceAsStream("/reportes/reporteAsistencias.jasper");
+
             jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
         } catch (JRException ex) {
             System.getLogger(FuncionarioChecker.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -334,9 +340,7 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
         // 5. Export to PDF
         // JasperExportManager.exportReportToPdfFile(jasperPrint, "output.pdf");
         // Or show it
-        JasperViewer.viewReport(jasperPrint,
-                false);
-
+        JasperViewer.viewReport(jasperPrint, false);
     }
 
 }

@@ -1,3 +1,10 @@
 target
-
+Documentation/*.aux 
+Documentation/*.log
+Documentation/*.fls
+Documentation/*.pre
+Documentation/*.out 
+Documentation/*.toc
+Documentation/*.fdb_latexmk
+Documentation/Graficos/*
 .nb-configuration.xml
