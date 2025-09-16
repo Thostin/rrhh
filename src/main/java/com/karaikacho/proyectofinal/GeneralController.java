@@ -152,7 +152,7 @@ public class GeneralController extends OpensFXML implements Initializable {
             return;
         }
         /*
-        try {
+        try {6
             new ProcessBuilder("xdg-open", "/home/thotstin/Code/JAVA/RRHH/ProyectoFinal/Documentation/out/documentacion.pdf").start();
         } catch (IOException ex) {
             System.getLogger(GeneralController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);

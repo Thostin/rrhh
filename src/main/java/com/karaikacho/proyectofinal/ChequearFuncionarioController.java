@@ -218,7 +218,7 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
             int final_ = -1;
             for (int i = 0; i < horario.size(); ++i) {
                 if (primer == -1 && 1 + horario.get(i).inicio() / 1440 == iterar.getDayOfWeek().getValue()) {
-                    primer = i;
+                    primer = final_ = i;
                 } else if (-1 != primer && 1 + horario.get(i).inicio() / 1440 != iterar.getDayOfWeek().getValue()) {
                     final_ = i - 1;
                     break;
@@ -277,8 +277,11 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
                     if (null != primerHorario) {
                         registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
                     } else {
-                        registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                        registroReporte.add(new RegistroFuncionario(iterar, "", "", minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
                     }
+
+                    primerHorario = ultimoHorario = null;
+                    strEsSalidaAnticipada = strEsLlegadaTardia = "";
                 }
             }
 
@@ -327,7 +330,6 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
 
             //InputStream reportStream = getClass().getResourceAsStream("/reports/myreport.jasper");
             //JasperPrint jasperPrint = JasperFillManager.fillReport(reportStream, parameters, connection);
-
             InputStream jasperReport;
             jasperReport = getClass().getResourceAsStream("/reportes/reporteAsistencias.jasper");
 

@@ -93,8 +93,9 @@ public class MarcarController extends OpensFXML implements Initializable {
         if (null != ObjetosEstaticos.funcionarioSeleccion) {
             txtFuncionario.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
         }
-        ObjetosEstaticos.funcionarioSeleccion = null;
+
         funcionarioSeleccionado = ObjetosEstaticos.funcionarioSeleccion;
+        ObjetosEstaticos.funcionarioSeleccion = null;
     }
 
     @FXML
@@ -103,15 +104,19 @@ public class MarcarController extends OpensFXML implements Initializable {
         if (null != ObjetosEstaticos.funcionarioSeleccion) {
             txtReemplazante.setText(ObjetosEstaticos.funcionarioSeleccion.getNombres());
         }
-        ObjetosEstaticos.funcionarioSeleccion = null;
+
         funcionarioReemplazante = ObjetosEstaticos.funcionarioSeleccion;
+        ObjetosEstaticos.funcionarioSeleccion = null;
     }
 
     @FXML
     private void marcar(ActionEvent event) {
-        if(funcionarioSeleccionado == null)
+        if (funcionarioSeleccionado == null) {
+            System.out.println("no anda tu programa de mierda");
             return;
-        
+        }
+
+        System.out.println("lesufhin3iebvuw8e");
         DateTimeFormatter hhmm = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime horaAux = LocalTime.parse(txtHora.getText(), hhmm);
 
