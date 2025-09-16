@@ -18,7 +18,6 @@
             <Button fx:id="btnChequearFuncionario" layoutX="617.0" layoutY="130.0" mnemonicParsing="false" onAction="#buscarFuncionario" text="..." />
             <TextField fx:id="txtFuncionario" disable="true" layoutX="300.0" layoutY="131.0" prefHeight="31.0" prefWidth="307.0" />
             <Label layoutX="200.0" layoutY="137.0" style="-fx-font-size: 15;" text="Funcionario:" />
-            <Button fx:id="btnRevisar" layoutX="407.0" layoutY="290.0" mnemonicParsing="false" onAction="#chequear" text="Revisar" />
             <DatePicker fx:id="fechaInicio" layoutX="174.0" layoutY="210.0" />
             <DatePicker fx:id="fechaFin" layoutX="559.0" layoutY="210.0" />
             <Label layoutX="102.0" layoutY="218.0" style="-fx-font-size: 15;" text="Desde:" />
@@ -50,7 +49,7 @@
                </children>
             </Pane>
             <Label fx:id="errorLabel" layoutX="75.0" layoutY="281.0" styleClass="error-label" text="Label" visible="false" />
-            <Button fx:id="btnVerRegistros" layoutX="557.0" layoutY="295.0" mnemonicParsing="false" onAction="#verRegistros" text="Ver registros" />
+            <Button fx:id="btnVerRegistros" layoutX="408.0" layoutY="290.0" mnemonicParsing="false" onAction="#verRegistros" text="Ver registros" />
          </children>
       </Pane>
    </children>
