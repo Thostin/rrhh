@@ -34,14 +34,14 @@
                   </ImageView>
                   <Pane fx:id="most_inner_pane" layoutX="757.0" layoutY="6.0" prefHeight="66.0" prefWidth="54.0" styleClass="most_inner_pane" stylesheets="@css/sample_style.css">
                      <children>
-                        <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="7.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="11.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/3dots-removebg-preview.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
-                  <JFXTextArea editable="false" layoutX="104.0" layoutY="6.0" prefHeight="99.0" prefWidth="653.0" style="-jfx-unfocus-color: none;" text="Chequea asistencia de funcionario">
+                  <JFXTextArea editable="false" layoutX="96.0" layoutY="-2.0" prefHeight="100.0" prefWidth="670.0" style="-jfx-unfocus-color: none;" text="Chequear asistencia de funcionario">
                      <font>
                         <Font name="Britannic Bold" size="40.0" />
                      </font>

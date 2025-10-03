@@ -179,9 +179,11 @@ public class CargarHorarioController extends OpensFXML implements Initializable 
         que hayan salas en las que hayan varios funcionarios al
         mismo tiempo y otras que no, y eso añade complejidad 
         innecesaria (no es decisivo en ningun calculo */
-        ArrayList<Par> horario = FuncionarioChecker.getHorario(ObjetosEstaticos.funcionarioSeleccion.getId());
+        // No estoy seguro de que ObjetosEstaticos.ocupacionModificar.getId() sea correcto como segundo argumento       
+        ArrayList<Par> horario = FuncionarioChecker.getHorarioRestrict(ObjetosEstaticos.funcionarioSeleccion.getId(), ObjetosEstaticos.ocupacionModificar.getId());
         int aux;
         for (Par intervalo : horario) {
+            // if(ObjetosEstaticos.detalleOcupacionModificar.getOcupacion().getId() == )continue;
             aux = semiMu(detalleHoraInicio - intervalo.inicio())
                     + semiMu(intervalo.fin() - detalleHoraFin);
             if (0 < semiMu(intervalo.fin() - intervalo.inicio() - aux)) {
@@ -195,7 +197,7 @@ public class CargarHorarioController extends OpensFXML implements Initializable 
             ocupacion
                     = new DbOcupacion(
                             ObjetosEstaticos.detalleOcupacionModificar.getOcupacion().getId(),
-                            detalleHoraInicio,
+                            detalleHoraInicio,// Para ignorar el horario a modificar
                             detalleHoraFin,
                             ObjetosEstaticos.funcionarioSeleccion.getId(),
                             ObjetosEstaticos.salaSeleccion.getId(),

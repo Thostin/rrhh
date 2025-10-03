@@ -62,7 +62,7 @@ public class GeneralController extends OpensFXML implements Initializable {
     @FXML
     private void funcionarios(ActionEvent event) {
         btnFuncionarios.setDisable(true);
-        abrirFXML("acceso.fxml", "Pagina de Funcionarios", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        abrirFXML("acceso.fxml", "Página de Funcionarios", (Stage) ((Node) event.getSource()).getScene().getWindow());
         btnFuncionarios.setDisable(false);
     }
 

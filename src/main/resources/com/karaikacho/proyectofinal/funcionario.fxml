@@ -44,7 +44,7 @@
                               <Font name="Bookman Old Style Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="332.0" layoutY="84.0" prefHeight="18.0" prefWidth="71.0" text="Linea Baja:">
+                        <Label layoutX="332.0" layoutY="84.0" prefHeight="18.0" prefWidth="71.0" text="Línea Baja:">
                            <font>
                               <Font name="Bookman Old Style Bold" size="12.0" />
                            </font>

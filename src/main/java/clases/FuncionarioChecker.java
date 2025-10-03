@@ -87,7 +87,29 @@ public class FuncionarioChecker {
         }
         return horas;
     }
+    
+    // Para ignorar el horario a modificar
+    public static ArrayList<Par> getHorarioRestrict(int idFuncionario, int ignore) {
+        ArrayList<Par> horas = new ArrayList();
+        String sql = "SELECT horaInicio, horaFin FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " AND NOT id=" + ignore + "ORDER BY horaInicio ASC";
 
+        try (Connection con = ConnectionPool.getConnection()) {
+            Statement stm = con.createStatement();
+            ResultSet resultado = stm.executeQuery(sql);
+
+            Par par;
+            while (resultado.next()) {
+                par = new Par(resultado.getInt("horaInicio"), resultado.getInt("horaFin"));
+                horas.add(par);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioChecker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return horas;
+    }
+
+    
     private static ArrayList<Par> getHorasNoFijas(int idFuncionario) {
         ArrayList<Par> horasNoCompensadas = new ArrayList();
         String sql = "SELECT horaInicio, horaFin FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " AND compensatorio=1 ORDER BY horaInicio ASC";

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="585.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.MiniLoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="585.0" styleClass="side_ankerpane" stylesheets="@css/styleClass.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.karaikacho.proyectofinal.MiniLoginController">
    <children>
       <Pane layoutX="29.0" layoutY="49.0" prefHeight="315.0" prefWidth="526.0">
          <children>
@@ -41,7 +41,7 @@
                </children>
             </Pane>
             <Label layoutX="94.0" layoutY="119.0" style="-fx-font-size: 15;" text="Usuario:" />
-            <Label layoutX="82.0" layoutY="187.0" style="-fx-font-size: 15;" text="Contrsseña:" />
+            <Label layoutX="82.0" layoutY="187.0" style="-fx-font-size: 15;" text="Contraseña:" />
          </children>
       </Pane>
    </children>

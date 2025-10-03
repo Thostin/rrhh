@@ -14,7 +14,7 @@
             <TableColumn fx:id="columnaNombres" prefWidth="171.0" text="Nombres" />
             <TableColumn fx:id="columnaApellidos" prefWidth="162.0" text="Apellidos" />
             <TableColumn fx:id="columnaCi" prefWidth="97.0" text="CI" />
-            <TableColumn fx:id="columnaLineaBaja" prefWidth="91.0" text="Linea Baja" />
+            <TableColumn fx:id="columnaLineaBaja" prefWidth="91.0" text="Línea Baja" />
             <TableColumn fx:id="columnaCelular" prefWidth="182.0" text="Celular" />
          </columns>
       </TableView>

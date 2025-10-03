@@ -76,7 +76,7 @@ public class MiniLoginController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 
-        abrirFXML("general.fxml", "Pagina principal");
+        abrirFXML("general.fxml", "Página principal");
     }
 
 }
