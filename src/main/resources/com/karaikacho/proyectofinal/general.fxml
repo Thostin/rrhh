@@ -99,6 +99,7 @@
                         <Font name="Century Gothic Bold" size="13.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton fx:id="btnCargarHuella" layoutX="507.0" layoutY="225.0" onAction="#cargarHuella" text="Cargar Huella" />
                </children>
             </AnchorPane>
          </children>

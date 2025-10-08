@@ -7,6 +7,7 @@ module com.karaikacho.proyectofinal {
     requires com.zaxxer.hikari;
     requires jasperreports;
     requires java.desktop;
+    requires com.fazecast.jSerialComm;
     
     opens com.karaikacho.proyectofinal to javafx.fxml, java.desktop;
     opens clases to javafx.fxml, javafx.base;

@@ -19,7 +19,8 @@ public class ConnectionPool {
     
     public static void init(String username, String password){
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://186.17.106.181:3100/horariosrrhh");
+        //config.setJdbcUrl("jdbc:mysql://186.17.106.181:3100/horariosrrhh");
+        config.setJdbcUrl("jdbc:mysql://localhost/horariosrrhh");
         config.setUsername(username);
         config.setPassword(password);
         config.setMaximumPoolSize(10); // Max 10 active connections

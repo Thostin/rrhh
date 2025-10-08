@@ -91,7 +91,7 @@ public class FuncionarioChecker {
     // Para ignorar el horario a modificar
     public static ArrayList<Par> getHorarioRestrict(int idFuncionario, int ignore) {
         ArrayList<Par> horas = new ArrayList();
-        String sql = "SELECT horaInicio, horaFin FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " AND NOT id=" + ignore + "ORDER BY horaInicio ASC";
+        String sql = "SELECT horaInicio, horaFin FROM Ocupacion WHERE idFuncionario=" + idFuncionario + " AND NOT id=" + ignore + " ORDER BY horaInicio ASC";
 
         try (Connection con = ConnectionPool.getConnection()) {
             Statement stm = con.createStatement();

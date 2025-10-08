@@ -36,9 +36,7 @@ public class GeneralController extends OpensFXML implements Initializable {
     private Button btnSalas;
     @FXML
     private Button btnFuncionarios;
-    @FXML
     private Button btnEspecialidades;
-    @FXML
     private Button btnCursos;
     @FXML
     private Button btnMarcar;
@@ -157,5 +155,10 @@ public class GeneralController extends OpensFXML implements Initializable {
         } catch (IOException ex) {
             System.getLogger(GeneralController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }*/
+    }
+    
+    @FXML
+    private void cargarHuella(ActionEvent event) {
+        abrirFXML("cargarHuella.fxml", "Cargar Huella", (Stage) ((Node) event.getSource()).getScene().getWindow());
     }
 }

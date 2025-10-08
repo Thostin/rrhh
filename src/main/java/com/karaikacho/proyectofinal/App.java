@@ -1,5 +1,6 @@
 package com.karaikacho.proyectofinal;
 
+import clases.ArduinoLectorHuellas;
 import clases.FuncionarioChecker;
 import java.awt.Desktop;
 import java.io.File;
@@ -23,7 +24,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
+        ArduinoLectorHuellas.init();
         scene = new Scene(loadFXML("miniLogin"));
         stage.setScene(scene);
         stage.show();

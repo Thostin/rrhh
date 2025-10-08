@@ -29,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -109,6 +110,47 @@ public class MarcarController extends OpensFXML implements Initializable {
         ObjetosEstaticos.funcionarioSeleccion = null;
     }
 
+    public static void marcarId(int idFuncionario){
+        /*if (funcionarioSeleccionado == null) {
+            System.out.println("no anda tu programa de mierda");
+            return;
+        }*/
+
+        //System.out.println("lesufhin3iebvuw8e");
+        //DateTimeFormatter hhmm = DateTimeFormatter.ofPattern("HH:mm");
+        //LocalTime horaAux = LocalTime.parse(txtHora.getText(), hhmm);
+
+        // LocalDateTime hora = LocalDateTime.of(datePickerFecha.getValue(), horaAux);
+        LocalDateTime hora = LocalDateTime.now();
+        
+        // Variable para guardar la clave generada
+        int id;
+        String sql = "INSERT INTO REGISTROS (hora, idFuncionario) VALUES (?, ?);";
+        try (Connection con = ConnectionPool.getConnection()) {
+            PreparedStatement stm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            //stm.setInt(1, this.id);
+            stm.setObject(1, hora);
+            stm.setInt(2, idFuncionario);
+            stm.executeUpdate();
+
+            ResultSet clave = stm.getGeneratedKeys();
+            clave.next();
+            id = clave.getInt(1);
+            System.out.println("El registro se aniadio con id: " + id);
+            // No se puede llamar nada de Fx desde otro thread
+            /*Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("El sistema comunica: ");
+            alerta.setHeaderText("Marcado correctamente");
+            alerta.show();*/
+            //txtHora.clear();
+        } catch (SQLException ex) {
+            Logger.getLogger(MarcarController.class.getName()).log(Level.SEVERE, null, ex);
+            return;
+        }
+        
+        // No es posible marcar reemplazante con huella
+    }
+    
     @FXML
     private void marcar(ActionEvent event) {
         if (funcionarioSeleccionado == null) {
@@ -116,7 +158,7 @@ public class MarcarController extends OpensFXML implements Initializable {
             return;
         }
 
-        System.out.println("lesufhin3iebvuw8e");
+        //System.out.println("lesufhin3iebvuw8e");
         DateTimeFormatter hhmm = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime horaAux = LocalTime.parse(txtHora.getText(), hhmm);
 
@@ -136,6 +178,11 @@ public class MarcarController extends OpensFXML implements Initializable {
             clave.next();
             id = clave.getInt(1);
             System.out.println("El registro se aniadio con id: " + id);
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("El sistema comunica: ");
+            alerta.setHeaderText("Marcado correctamente");
+            alerta.show();
+            txtHora.clear();
         } catch (SQLException ex) {
             Logger.getLogger(MarcarController.class.getName()).log(Level.SEVERE, null, ex);
             return;

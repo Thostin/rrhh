@@ -275,9 +275,9 @@ public class ChequearFuncionarioController extends OpensFXML implements Initiali
                     }
 
                     if (null != primerHorario) {
-                        registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                        registroReporte.add(new RegistroFuncionario(iterar, minutoAString(primerHorario.inicio()), minutoAString(ultimoHorario.fin()), minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, ""));
                     } else {
-                        registroReporte.add(new RegistroFuncionario(iterar, "", "", minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, "TODO"));
+                        registroReporte.add(new RegistroFuncionario(iterar, "", "", minutoAString(toMinute(registros.get(j).inicio()) % 86400), minutoAString(toMinute(registros.get(j).fin()) % 86400), strEsLlegadaTardia, strEsSalidaAnticipada, ""));
                     }
 
                     primerHorario = ultimoHorario = null;
